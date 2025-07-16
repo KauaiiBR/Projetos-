@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KARPE | Moda com Atitude</title>
+    <style>
+        /* RESET & BASE STYLES */
+        :root {
+            --black: #000000;
+            --white: #FFFFFF;
+            --gray-1: #F5F5F5;
+            --gray-2: #E5E5E5;
+            --gray-3: #CCCCCC;
+            --gray-4: #999999;
+            --gray-5: #666666;
+            --gray-6: #333333;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            --spacing: 120px;
+            --spacing-md: 80px;
+            --spacing-sm: 40px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 62.5%;
+        }
+
+        body {
+            font-family: 'Neue Haas Grotesk', 'Helvetica Neue', Arial, sans-serif;
+            color: var(--black);
+            background-color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* HEADER COM BORDA CINZA */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 30px 0;
+            transition: var(--transition);
+            border-bottom: 1px solid var(--gray-3); /* Borda cinza adicionada */
+            background-color: var(--white); /* Fundo branco para garantir contraste */
+        }
+
+        /* HERO COM VÍDEO DE FUNDO */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero__video-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        .hero__content {
+            position: relative;
+            z-index: 2;
+            max-width: 60%;
+            color: var(--white); /* Texto branco para contraste com vídeo */
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Sombra para melhor legibilidade */
+        }
+
+        /* Restante do CSS permanece igual */
+        /* TYPOGRAPHY */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 500;
+            line-height: 1.2;
+            letter-spacing: -0.03em;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-size: 9.6rem;
+            letter-spacing: -0.05em;
+        }
+
+        h2 {
+            font-size: 7.2rem;
+        }
+
+        h3 {
+            font-size: 4.8rem;
+        }
+
+        h4 {
+            font-size: 3.6rem;
+        }
+
+        h5 {
+            font-size: 2.4rem;
+        }
+
+        h6 {
+            font-size: 1.8rem;
+        }
+
+        p {
+            font-size: 1.6rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        /* LAYOUT */
+        .container {
+            width: 100%;
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .section {
+            padding: var(--spacing) 0;
+            position: relative;
+        }
+
+        .section--no-padding {
+            padding: 0;
+        }
+
+        .section--full-height {
+            min-height: 100vh;
+        }
+
+        /* COMPONENTS */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.8rem 4rem;
+            font-size: 1.4rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            border: 1px solid var(--black);
+            background-color: var(--white);
+            color: var(--black);
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn:hover {
+            background-color: var(--black);
+            color: var(--white);
+        }
+
+        .btn--black {
+            background-color: var(--black);
+            color: var(--white);
+            border-color: var(--black);
+        }
+
+        .btn--black:hover {
+            background-color: var(--white);
+            color: var(--black);
+        }
+
+        .header__inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header__logo {
+            font-size: 2.4rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        .header__nav {
+            display: flex;
+        }
+
+        .header__nav-list {
+            display: flex;
+            list-style: none;
+        }
+
+        .header__nav-item {
+            margin-left: 50px;
+            position: relative;
+        }
+
+        .header__nav-link {
+            font-size: 1.4rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            position: relative;
+        }
+
+        .header__nav-link:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--black);
+            transition: var(--transition);
+        }
+
+        .header__nav-link:hover:after {
+            width: 100%;
+        }
+
+        .header__actions {
+            display: flex;
+            align-items: center;
+        }
+
+        .header__action {
+            margin-left: 30px;
+            font-size: 1.6rem;
+            cursor: pointer;
+        }
+
+        .hero__title {
+            font-size: 12rem;
+            font-weight: 400;
+            line-height: 1;
+            margin-bottom: 3rem;
+            letter-spacing: -0.05em;
+        }
+
+        .hero__subtitle {
+            font-size: 2.4rem;
+            font-weight: 400;
+            margin-bottom: 5rem;
+            letter-spacing: 0.1em;
+        }
+
+        /* COLLECTIONS */
+        .collections {
+            padding: 150px 0;
+        }
+
+        .collections__header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 80px;
+        }
+
+        .collections__title {
+            font-size: 4.8rem;
+            font-weight: 400;
+            max-width: 50%;
+        }
+
+        .collections__grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .collection-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .collection-card__image {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .collection-card:hover .collection-card__image {
+            transform: scale(1.03);
+        }
+
+        .collection-card__content {
+            position: absolute;
+            bottom: 40px;
+            left: 40px;
+        }
+
+        .collection-card__title {
+            font-size: 2.4rem;
+            margin-bottom: 10px;
+        }
+
+        .collection-card__link {
+            font-size: 1.4rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+        }
+
+        .collection-card__link i {
+            margin-left: 10px;
+            transition: var(--transition);
+        }
+
+        .collection-card__link:hover i {
+            transform: translateX(5px);
+        }
+
+        /* ABOUT */
+        .about {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            min-height: 100vh;
+        }
+
+        .about__image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about__content {
+            padding: 120px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .about__title {
+            font-size: 4.8rem;
+            font-weight: 400;
+            margin-bottom: 40px;
+        }
+
+        .about__text {
+            font-size: 1.6rem;
+            margin-bottom: 40px;
+            max-width: 80%;
+        }
+
+        /* NEWSLETTER */
+        .newsletter {
+            padding: 120px 0;
+            background-color: var(--gray-1);
+        }
+
+        .newsletter__inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .newsletter__content {
+            max-width: 40%;
+        }
+
+        .newsletter__title {
+            font-size: 3.6rem;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+
+        .newsletter__form {
+            display: flex;
+            width: 50%;
+        }
+
+        .newsletter__input {
+            flex: 1;
+            padding: 20px;
+            border: 1px solid var(--black);
+            border-right: none;
+            font-size: 1.4rem;
+            background-color: transparent;
+        }
+
+        .newsletter__submit {
+            padding: 0 40px;
+            border: 1px solid var(--black);
+            background-color: var(--black);
+            color: var(--white);
+            font-size: 1.4rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .newsletter__submit:hover {
+            background-color: var(--white);
+            color: var(--black);
+        }
+
+        /* FOOTER */
+        .footer {
+            padding: 100px 0 50px;
+            background-color: var(--black);
+            color: var(--white);
+        }
+
+        .footer__top {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 60px;
+            margin-bottom: 80px;
+        }
+
+        .footer__title {
+            font-size: 1.4rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+        }
+
+        .footer__links {
+            list-style: none;
+        }
+
+        .footer__link {
+            margin-bottom: 15px;
+        }
+
+        .footer__link a {
+            font-size: 1.4rem;
+            color: var(--gray-4);
+            transition: var(--transition);
+        }
+
+        .footer__link a:hover {
+            color: var(--white);
+        }
+
+        .footer__bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 50px;
+            border-top: 1px solid var(--gray-6);
+        }
+
+        .footer__copyright {
+            font-size: 1.2rem;
+            color: var(--gray-4);
+        }
+
+        .footer__social {
+            display: flex;
+        }
+
+        .footer__social-item {
+            margin-left: 30px;
+        }
+
+        .footer__social-link {
+            font-size: 1.4rem;
+            color: var(--gray-4);
+            transition: var(--transition);
+        }
+
+        .footer__social-link:hover {
+            color: var(--white);
+        }
+
+        /* UTILITY CLASSES */
+        .text-center {
+            text-align: center;
+        }
+
+        .text-uppercase {
+            text-transform: uppercase;
+        }
+
+        .letter-spacing {
+            letter-spacing: 0.1em;
+        }
+
+        .mb-0 {
+            margin-bottom: 0;
+        }
+
+        .mb-10 {
+            margin-bottom: 10px;
+        }
+
+        .mb-20 {
+            margin-bottom: 20px;
+        }
+
+        .mb-30 {
+            margin-bottom: 30px;
+        }
+
+        .mb-40 {
+            margin-bottom: 40px;
+        }
+
+        .mb-50 {
+            margin-bottom: 50px;
+        }
+
+        .mb-60 {
+            margin-bottom: 60px;
+        }
+
+        .mb-70 {
+            margin-bottom: 70px;
+        }
+
+        .mb-80 {
+            margin-bottom: 80px;
+        }
+
+        .mb-90 {
+            margin-bottom: 90px;
+        }
+
+        .mb-100 {
+            margin-bottom: 100px;
+        }
+
+        /* ANIMATIONS */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1600px) {
+            .container {
+                max-width: 1400px;
+            }
+        }
+
+        @media (max-width: 1440px) {
+            .container {
+                max-width: 1200px;
+            }
+
+            h1 {
+                font-size: 8rem;
+            }
+
+            h2 {
+                font-size: 6rem;
+            }
+
+            .hero__title {
+                font-size: 10rem;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .container {
+                max-width: 1000px;
+                padding: 0 30px;
+            }
+
+            .section {
+                padding: 100px 0;
+            }
+
+            .collections__grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+            }
+
+            .about__image {
+                height: 500px;
+            }
+
+            .about__content {
+                padding: 80px;
+            }
+
+            .footer__top {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .container {
+                max-width: 800px;
+            }
+
+            h1 {
+                font-size: 6.4rem;
+            }
+
+            h2 {
+                font-size: 4.8rem;
+            }
+
+            .hero__title {
+                font-size: 8rem;
+            }
+
+            .hero__content {
+                max-width: 80%;
+            }
+
+            .newsletter__inner {
+                flex-direction: column;
+            }
+
+            .newsletter__content {
+                max-width: 100%;
+                margin-bottom: 40px;
+            }
+
+            .newsletter__form {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                max-width: 600px;
+                padding: 0 20px;
+            }
+
+            .header__nav {
+                display: none;
+            }
+
+            .hero__title {
+                font-size: 6rem;
+            }
+
+            .hero__subtitle {
+                font-size: 1.8rem;
+            }
+
+            .collections__header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .collections__title {
+                max-width: 100%;
+                margin-bottom: 40px;
+            }
+
+            .about__content {
+                padding: 60px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                max-width: 100%;
+            }
+
+            .section {
+                padding: 80px 0;
+            }
+
+            h1 {
+                font-size: 4.8rem;
+            }
+
+            h2 {
+                font-size: 3.6rem;
+            }
+
+            .hero__title {
+                font-size: 4.8rem;
+            }
+
+            .hero__content {
+                max-width: 100%;
+            }
+
+            .collections__grid {
+                grid-template-columns: 1fr;
+            }
+
+            .collection-card__image {
+                height: 400px;
+            }
+
+            .about__content {
+                padding: 40px;
+            }
+
+            .footer__top {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER COM BORDA CINZA -->
+    <header class="header">
+        <div class="container">
+            <div class="header__inner">
+                <div class="header__logo">KARP</div>
+                <nav class="header__nav">
+                    <ul class="header__nav-list">
+                        <li class="header__nav-item">
+                            <a href="#" class="header__nav-link">Novidades</a>
+                        </li>
+                        <li class="header__nav-item">
+                            <a href="Roupas.html" class="header__nav-link">Roupas</a>
+                        </li>
+                        <li class="header__nav-item">
+                            <a href="#" class="header__nav-link">Calçados</a>
+                        </li>
+                        <li class="header__nav-item">
+                            <a href="#" class="header__nav-link">Skincare</a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="header__actions">
+                    <div class="header__action">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="header__action">
+                        <i class="fas fa-shopping-bag"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO COM VÍDEO DE FUNDO -->
+    <section class="hero section--full-height">
+        <!-- Vídeo de fundo - substitua pelo seu vídeo -->
+        <video autoplay muted loop class="hero__video-bg">
+            <source src="Video KARP.mp4" type="video/mp4">
+            Seu navegador não suporta vídeos HTML5.
+        </video>
+        
+        <div class="container">
+            <div class="hero__content">
+                <h1 class="hero__title">ELEGÂNCIA</h1>
+                <h2 class="hero__subtitle">DESCOMPLICADA</h2>
+                <p class="hero__description">Coleção Outono/Inverno 2025</p>
+                <a href="#" class="btn btn--black">EXPLORAR</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- COLLECTIONS -->
+    <section class="collections section">
+        <div class="container">
+            <div class="collections__header">
+                <h2 class="collections__title">Nossas Coleções</h2>
+                <a href="#" class="btn">Ver tudo</a>
+            </div>
+            <div class="collections__grid">
+                <div class="collection-card">
+                    <img src="https://via.placeholder.com/800x1000" alt="Coleção 1" class="collection-card__image">
+                    <div class="collection-card__content">
+                        <h3 class="collection-card__title">Essenciais</h3>
+                        <a href="#" class="collection-card__link">
+                            Explorar
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="collection-card">
+                    <img src="https://via.placeholder.com/800x1000" alt="Coleção 2" class="collection-card__image">
+                    <div class="collection-card__content">
+                        <h3 class="collection-card__title">Urban</h3>
+                        <a href="#" class="collection-card__link">
+                            Explorar
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="collection-card">
+                    <img src="https://via.placeholder.com/800x1000" alt="Coleção 3" class="collection-card__image">
+                    <div class="collection-card__content">
+                        <h3 class="collection-card__title">Minimal</h3>
+                        <a href="#" class="collection-card__link">
+                            Explorar
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about section--no-padding">
+        <div class="about__image-container">
+            <img src="Imagem do WhatsApp de 2025-07-13 à(s) 22.42.54_83aeaabd.jpg" alt="Sobre a KARPE" class="about__image">
+        </div>
+        <div class="about__content">
+            <h2 class="about__title">A KARP</h2>
+            <p class="about__text">
+                Fundada em 2025 por Kauã Ribeiro da Paixão, a KARP nasceu da paixão por moda autêntica e atemporal. 
+                Nossa missão é oferecer peças que transcendem tendências passageiras, 
+                focando em qualidade, conforto e design inteligente.
+            </p>
+            <p class="about__text">
+                Cada peça é cuidadosamente selecionada para compor um guarda-roupa 
+                versátil e durável, onde o essencial encontra o extraordinário.
+            </p>
+            <a href="#" class="btn">Nossa história</a>
+        </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="newsletter section">
+        <div class="container">
+            <div class="newsletter__inner">
+                <div class="newsletter__content">
+                    <h3 class="newsletter__title">Assine nossa newsletter</h3>
+                    <p>Receba novidades, lançamentos e ofertas exclusivas.</p>
+                </div>
+                <form class="newsletter__form">
+                    <input type="email" placeholder="Seu melhor e-mail" class="newsletter__input" required>
+                    <button type="submit" class="newsletter__submit">Assinar</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer section">
+        <div class="container">
+            <div class="footer__top">
+                <div class="footer__col">
+                    <h4 class="footer__title">KARP</h4>
+                    <p>Moda com atitude. Design com propósito.</p>
+                </div>
+                <div class="footer__col">
+                    <h4 class="footer__title">Loja</h4>
+                    <ul class="footer__links">
+                        <li class="footer__link"><a href="#">Novidades</a></li>
+                        <li class="footer__link"><a href="#">Roupas</a></li>
+                        <li class="footer__link"><a href="#">Calçados</a></li>
+                        <li class="footer__link"><a href="#">Skincare</a></li>
+                    </ul>
+                </div>
+                <div class="footer__col">
+                    <h4 class="footer__title">Informações</h4>
+                    <ul class="footer__links">
+                        <li class="footer__link"><a href="#">Sobre nós</a></li>
+                        <li class="footer__link"><a href="#">Trocas e devoluções</a></li>
+                        <li class="footer__link"><a href="#">Entregas</a></li>
+                        <li class="footer__link"><a href="#">Política de privacidade</a></li>
+                    </ul>
+                </div>
+                <div class="footer__col">
+                    <h4 class="footer__title">Contato</h4>
+                    <ul class="footer__links">
+                        <li class="footer__link"><a href="#">karpe.companyy@gmail.com</a></li>
+                        <li class="footer__link"><a href="https://www.instagram.com/karp_company?igsh=NjRvb2NjcHNmbWNx">@Karpe_company</a></li>
+                        <li class="footer__link"><a href="#">Pirapora-MG</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p class="footer__copyright">© 2025 KARPE. Todos os direitos reservados.</p>
+                <div class="footer__social">
+                    <a href="#" class="footer__social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="footer__social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="footer__social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="footer__social-link"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FONT AWESOME -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    
+    <!-- MAIN JS -->
+    <script>
+        // Header scroll effect - atualizado para trabalhar com a nova borda
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'var(--white)';
+                header.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';
+            } else {
+                header.style.background = 'var(--white)'; /* Mantém branco por causa da borda */
+                header.style.boxShadow = 'none';
+            }
+        });
+
+        // Animation on scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.hero__content, .collections__header, .collection-card, .about__content, .newsletter__inner');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.animation = 'slideUp 1s forwards';
+                }
+            });
+        }
+
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+    </script>
+</body>
+</html>
