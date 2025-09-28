@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Skincare | KARPE</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* RESET & BASE STYLES */
         :root {
@@ -41,6 +42,35 @@
             -webkit-font-smoothing: antialiased;
         }
 
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: var(--spacing) 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--black);
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.4rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--gray-6);
+        }
+
         /* HEADER */
         .header {
             position: fixed;
@@ -48,7 +78,7 @@
             left: 0;
             width: 100%;
             z-index: 1000;
-            padding: 30px 0;
+            padding: 20px 0;
             transition: var(--transition);
             border-bottom: 1px solid var(--gray-3);
             background-color: var(--white);
@@ -65,6 +95,7 @@
             font-weight: 700;
             letter-spacing: 0.2em;
             text-transform: uppercase;
+            z-index: 1001;
         }
 
         .header__nav {
@@ -77,7 +108,7 @@
         }
 
         .header__nav-item {
-            margin-left: 50px;
+            margin-left: 30px;
             position: relative;
         }
 
@@ -87,6 +118,8 @@
             letter-spacing: 0.1em;
             text-transform: uppercase;
             position: relative;
+            text-decoration: none;
+            color: var(--black);
         }
 
         .header__nav-link:after {
@@ -110,9 +143,53 @@
         }
 
         .header__action {
-            margin-left: 30px;
-            font-size: 1.6rem;
+            margin-left: 20px;
+            font-size: 2rem;
             cursor: pointer;
+            position: relative;
+        }
+
+        .header__action svg {
+            width: 24px;
+            height: 24px;
+            fill: black;
+        }
+
+        .header__action-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--black);
+            color: var(--white);
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Menu Hamburger (Mobile) */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 25px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            width: 100%;
+            height: 2px;
+            background-color: var(--black);
+            transition: var(--transition);
+            transform-origin: center;
         }
 
         /* HERO SKINCARE */
@@ -130,6 +207,7 @@
             position: relative;
             z-index: 2;
             max-width: 60%;
+            padding: 0 20px;
         }
 
         .hero-skincare__title {
@@ -178,6 +256,7 @@
 
         .rotina-step {
             text-align: center;
+            padding: 20px;
         }
 
         .rotina-step__number {
@@ -207,29 +286,33 @@
             justify-content: space-between;
             align-items: flex-end;
             margin-bottom: 6rem;
+            flex-wrap: wrap;
         }
 
         .produtos__title {
             font-size: 3.6rem;
             font-weight: 400;
+            margin-bottom: 20px;
         }
 
         .produtos__filters {
             display: flex;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
         .produtos__filter {
-            margin-left: 30px;
             font-size: 1.4rem;
             cursor: pointer;
             position: relative;
+            padding: 5px 0;
         }
 
         .produtos__filter:after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: 0;
             left: 0;
             width: 0;
             height: 1px;
@@ -237,32 +320,36 @@
             transition: var(--transition);
         }
 
-        .produtos__filter:hover:after {
+        .produtos__filter:hover:after, .produtos__filter.active:after {
             width: 100%;
         }
 
         .produtos__grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
+            gap: 30px;
         }
 
         .produto-card {
             position: relative;
             background-color: var(--white);
             padding: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
 
         .produto-card__badge {
             position: absolute;
-            top: 30px;
-            right: 30px;
+            top: 20px;
+            right: 20px;
             background-color: var(--black);
             color: var(--white);
             padding: 5px 10px;
             font-size: 1.2rem;
             letter-spacing: 0.1em;
             z-index: 2;
+            border-radius: 3px;
         }
 
         .produto-card__image-container {
@@ -297,6 +384,8 @@
             transform: translateY(100%);
             transition: var(--transition);
             cursor: pointer;
+            border: none;
+            outline: none;
         }
 
         .produto-card:hover .produto-card__quickview {
@@ -316,8 +405,9 @@
         }
 
         .produto-card__price {
-            font-size: 1.4rem;
+            font-size: 1.6rem;
             color: var(--gray-5);
+            font-weight: 500;
         }
 
         /* BENEFICIOS */
@@ -345,11 +435,19 @@
 
         .beneficio-card {
             text-align: center;
-            padding: 40px;
+            padding: 40px 30px;
+            border-radius: 8px;
+            background-color: var(--gray-1);
+            transition: var(--transition);
+        }
+
+        .beneficio-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
 
         .beneficio-card__icon {
-            font-size: 3rem;
+            font-size: 4rem;
             margin-bottom: 20px;
             color: var(--black);
         }
@@ -366,7 +464,7 @@
 
         /* FOOTER */
         .footer {
-            padding: 100px 0 50px;
+            padding: 80px 0 40px;
             background-color: var(--black);
             color: var(--white);
         }
@@ -374,15 +472,15 @@
         .footer__top {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 60px;
-            margin-bottom: 80px;
+            gap: 40px;
+            margin-bottom: 60px;
         }
 
         .footer__title {
             font-size: 1.4rem;
             letter-spacing: 0.2em;
             text-transform: uppercase;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
 
         .footer__links {
@@ -390,13 +488,14 @@
         }
 
         .footer__link {
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .footer__link a {
             font-size: 1.4rem;
             color: var(--gray-4);
             transition: var(--transition);
+            text-decoration: none;
         }
 
         .footer__link a:hover {
@@ -407,8 +506,10 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding-top: 50px;
+            padding-top: 40px;
             border-top: 1px solid var(--gray-6);
+            flex-wrap: wrap;
+            gap: 20px;
         }
 
         .footer__copyright {
@@ -418,23 +519,21 @@
 
         .footer__social {
             display: flex;
-        }
-
-        .footer__social-item {
-            margin-left: 30px;
+            gap: 20px;
         }
 
         .footer__social-link {
-            font-size: 1.4rem;
+            font-size: 1.6rem;
             color: var(--gray-4);
             transition: var(--transition);
+            text-decoration: none;
         }
 
         .footer__social-link:hover {
             color: var(--white);
         }
 
-        /* RESPONSIVE */
+        /* RESPONSIVE STYLES */
         @media (max-width: 1200px) {
             .rotina__steps {
                 grid-template-columns: repeat(2, 1fr);
@@ -447,53 +546,216 @@
             .beneficios__grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+            
+            .hero-skincare__title {
+                font-size: 5.4rem;
+            }
         }
 
-        @media (max-width: 768px) {
-            .hero-skincare__content {
-                max-width: 80%;
+        @media (max-width: 992px) {
+            :root {
+                --spacing: 80px;
+                --spacing-md: 60px;
+                --spacing-sm: 30px;
             }
-
+            
+            .header__nav-item {
+                margin-left: 20px;
+            }
+            
+            .hero-skincare__content {
+                max-width: 70%;
+            }
+            
             .hero-skincare__title {
                 font-size: 4.8rem;
             }
-
+            
             .footer__top {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+            
+            .header__nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background: var(--white);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: var(--transition);
+                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            }
+            
+            .header__nav.active {
+                right: 0;
+            }
+            
+            .header__nav-list {
+                flex-direction: column;
+                align-items: center;
+                gap: 30px;
+            }
+            
+            .header__nav-item {
+                margin-left: 0;
+            }
+            
+            .header__actions {
+                margin-left: auto;
+            }
+            
+            .hero-skincare {
+                height: 60vh;
+                margin-top: 70px;
+            }
+            
+            .hero-skincare__content {
+                max-width: 100%;
+                text-align: center;
+            }
+            
+            .hero-skincare__title {
+                font-size: 4rem;
+            }
+            
+            .hero-skincare__subtitle {
+                font-size: 1.6rem;
+            }
+            
+            .rotina__steps {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .produtos__header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .produtos__filters {
+                width: 100%;
+                overflow-x: auto;
+                padding-bottom: 10px;
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+            
+            .produtos__filters::-webkit-scrollbar {
+                display: none;
+            }
+            
+            .produtos__grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            
+            .produto-card__image-container {
+                height: 250px;
+            }
+            
+            .beneficios__grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .beneficio-card {
+                padding: 30px 20px;
             }
         }
 
         @media (max-width: 576px) {
+            .header {
+                padding: 15px 0;
+            }
+            
+            .header__logo {
+                font-size: 2rem;
+            }
+            
+            .header__action {
+                margin-left: 15px;
+                font-size: 1.4rem;
+            }
+            
             .hero-skincare {
                 height: 50vh;
             }
-
-            .hero-skincare__content {
-                max-width: 100%;
-            }
-
+            
             .hero-skincare__title {
-                font-size: 3.6rem;
+                font-size: 3.2rem;
             }
-
-            .rotina__steps {
-                grid-template-columns: 1fr;
+            
+            .hero-skincare__subtitle {
+                font-size: 1.4rem;
             }
-
+            
+            .rotina__title, .produtos__title, .beneficios__title {
+                font-size: 2.8rem;
+            }
+            
             .produtos__grid {
                 grid-template-columns: 1fr;
             }
-
+            
             .produto-card__image-container {
-                height: 250px;
+                height: 220px;
             }
-
-            .beneficios__grid {
-                grid-template-columns: 1fr;
-            }
-
+            
             .footer__top {
                 grid-template-columns: 1fr;
+            }
+            
+            .footer__bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer__social {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .hero-skincare__title {
+                font-size: 2.8rem;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+                font-size: 1.2rem;
+            }
+            
+            .produto-card {
+                padding: 15px;
+            }
+            
+            .produto-card__image-container {
+                height: 200px;
+            }
+        }
+
+        /* Classe utilitária para esconder elementos em mobile */
+        .mobile-hidden {
+            display: block;
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-hidden {
+                display: none;
             }
         }
     </style>
@@ -503,29 +765,41 @@
     <header class="header">
         <div class="container">
             <div class="header__inner">
-                <div class="header__logo">KARP</div>
-                <nav class="header__nav">
+                <div class="header__logo">KARPE</div>
+                
+                <button class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
+                <nav class="header__nav" id="nav">
                     <ul class="header__nav-list">
                         <li class="header__nav-item">
                             <a href="/" class="header__nav-link">Novidades</a>
                         </li>
                         <li class="header__nav-item">
-                            <a href="Roupas.html" class="header__nav-link">Roupas</a>
+                            <a class='header__nav-link' href='Roupas.html'>Roupas</a>
                         </li>
                         <li class="header__nav-item">
                             <a href="Calçados.html" class="header__nav-link">Calçados</a>
                         </li>
                         <li class="header__nav-item">
-                            <a href="SkinCare.html" class="header__nav-link">Skincare</a>
+                            <a class='header__nav-link' href='SkinCare.html'>Skincare</a>
                         </li>
                     </ul>
                 </nav>
                 <div class="header__actions">
-                    <div class="header__action">
+                    <div class="header__action mobile-hidden">
                         <i class="fas fa-search"></i>
                     </div>
                     <div class="header__action">
-                        <i class="fas fa-shopping-bag"></i>
+                        <a href="carrinho.html">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="24" height="24">
+                                <path d="M24 48C10.7 48 0 58.7 0 72C0 85.3 10.7 96 24 96L69.3 96C73.2 96 76.5 98.8 77.2 102.6L129.3 388.9C135.5 423.1 165.3 448 200.1 448L456 448C469.3 448 480 437.3 480 424C480 410.7 469.3 400 456 400L200.1 400C188.5 400 178.6 391.7 176.5 380.3L171.4 352L475 352C505.8 352 532.2 330.1 537.9 299.8L568.9 133.9C572.6 114.2 557.5 96 537.4 96L124.7 96L124.3 94C119.5 67.4 96.3 48 69.2 48L24 48zM208 576C234.5 576 256 554.5 256 528C256 501.5 234.5 480 208 480C181.5 480 160 501.5 160 528C160 554.5 181.5 576 208 576zM432 576C458.5 576 480 554.5 480 528C480 501.5 458.5 480 432 480C405.5 480 384 501.5 384 528C384 554.5 405.5 576 432 576z"/>
+                            </svg>
+                            <span class="header__action-count">0</span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -564,7 +838,7 @@
                 <div class="rotina-step">
                     <div class="rotina-step__number">03</div>
                     <h3 class="rotina-step__title">Tonificação</h3>
-                    <p class="rotina-step__description">Equilíbrio do pH e preparação para absorção de ativos</p>
+                    <p class="rotina-step__description">Equilíbrio do pH and preparação para absorção de ativos</p>
                 </div>
                 <div class="rotina-step">
                     <div class="rotina-step__number">04</div>
@@ -581,7 +855,7 @@
             <div class="produtos__header">
                 <h2 class="produtos__title">Nossos Produtos</h2>
                 <div class="produtos__filters">
-                    <div class="produtos__filter">Todos</div>
+                    <div class="produtos__filter active">Todos</div>
                     <div class="produtos__filter">Limpeza</div>
                     <div class="produtos__filter">Hidratação</div>
                     <div class="produtos__filter">Especiais</div>
@@ -593,7 +867,7 @@
                     <div class="produto-card__image-container">
                         <span class="produto-card__badge">Novidade</span>
                         <img src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Cleanser Facial" class="produto-card__image">
-                        <div class="produto-card__quickview">Visualização Rápida</div>
+                        <button class="produto-card__quickview">Visualização Rápida</button>
                     </div>
                     <h3 class="produto-card__title">Cleanser Facial</h3>
                     <p class="produto-card__category">Limpeza</p>
@@ -605,7 +879,7 @@
                     <div class="produto-card__image-container">
                         <span class="produto-card__badge">Mais Vendido</span>
                         <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" alt="Hidratante Noturno" class="produto-card__image">
-                        <div class="produto-card__quickview">Visualização Rápida</div>
+                        <button class="produto-card__quickview">Visualização Rápida</button>
                     </div>
                     <h3 class="produto-card__title">Hidratante Noturno</h3>
                     <p class="produto-card__category">Hidratação</p>
@@ -616,7 +890,7 @@
                 <div class="produto-card">
                     <div class="produto-card__image-container">
                         <img src="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" alt="Esfoliante Suave" class="produto-card__image">
-                        <div class="produto-card__quickview">Visualização Rápida</div>
+                        <button class="produto-card__quickview">Visualização Rápida</button>
                     </div>
                     <h3 class="produto-card__title">Esfoliante Suave</h3>
                     <p class="produto-card__category">Esfoliação</p>
@@ -627,7 +901,7 @@
                 <div class="produto-card">
                     <div class="produto-card__image-container">
                         <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" alt="Tônico Facial" class="produto-card__image">
-                        <div class="produto-card__quickview">Visualização Rápida</div>
+                        <button class="produto-card__quickview">Visualização Rápida</button>
                     </div>
                     <h3 class="produto-card__title">Tônico Facial</h3>
                     <p class="produto-card__category">Tonificação</p>
@@ -639,7 +913,7 @@
                     <div class="produto-card__image-container">
                         <span class="produto-card__badge">Novidade</span>
                         <img src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Sérum Vitamina C" class="produto-card__image">
-                        <div class="produto-card__quickview">Visualização Rápida</div>
+                        <button class="produto-card__quickview">Visualização Rápida</button>
                     </div>
                     <h3 class="produto-card__title">Sérum Vitamina C</h3>
                     <p class="produto-card__category">Tratamento</p>
@@ -650,7 +924,7 @@
                 <div class="produto-card">
                     <div class="produto-card__image-container">
                         <img src="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" alt="Protetor Solar FPS 50" class="produto-card__image">
-                        <div class="produto-card__quickview">Visualização Rápida</div>
+                        <button class="produto-card__quickview">Visualização Rápida</button>
                     </div>
                     <h3 class="produto-card__title">Protetor Solar FPS 50</h3>
                     <p class="produto-card__category">Proteção</p>
@@ -698,9 +972,9 @@
                     <h4 class="footer__title">Loja</h4>
                     <ul class="footer__links">
                         <li class="footer__link"><a href="#">Novidades</a></li>
-                        <li class="footer__link"><a href="Roupas.html">Roupas</a></li>
+                        <li class="footer__link"><a href='Roupas.html'>Roupas</a></li>
                         <li class="footer__link"><a href="Calçados.html">Calçados</a></li>
-                        <li class="footer__link"><a href="SkinCare.html">Skincare</a></li>
+                        <li class="footer__link"><a href='SkinCare.html'>Skincare</a></li>
                     </ul>
                 </div>
                 <div class="footer__col">
@@ -709,7 +983,7 @@
                         <li class="footer__link"><a href="KARPE.html">Sobre nós</a></li>
                         <li class="footer__link"><a href="#">Trocas e devoluções</a></li>
                         <li class="footer__link"><a href="#">Entregas</a></li>
-                        <li class="footer__link"><a href="#">Política de privacidade</a></li>
+                        <li class="footer__link"><a href="Politica de privacidade.html">Política de privacidade</a></li>
                     </ul>
                 </div>
                 <div class="footer__col">
@@ -733,11 +1007,42 @@
         </div>
     </footer>
 
-    <!-- FONT AWESOME -->
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    
     <!-- MAIN JS -->
     <script>
+        // Menu hamburger toggle
+        const hamburger = document.getElementById('hamburger');
+        const nav = document.getElementById('nav');
+        
+        hamburger.addEventListener('click', function() {
+            nav.classList.toggle('active');
+            hamburger.classList.toggle('active');
+            
+            // Animação do hamburger para X
+            const spans = hamburger.querySelectorAll('span');
+            if(nav.classList.contains('active')) {
+                spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                spans[1].style.opacity = '0';
+                spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+            } else {
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            }
+        });
+        
+        // Fechar menu ao clicar em um link
+        document.querySelectorAll('.header__nav-link').forEach(link => {
+            link.addEventListener('click', function() {
+                nav.classList.remove('active');
+                hamburger.classList.remove('active');
+                
+                const spans = hamburger.querySelectorAll('span');
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            });
+        });
+
         // Header scroll effect
         window.addEventListener('scroll', function() {
             const header = document.querySelector('.header');
@@ -754,11 +1059,71 @@
         document.querySelectorAll('.produtos__filter').forEach(filter => {
             filter.addEventListener('click', function() {
                 document.querySelectorAll('.produtos__filter').forEach(f => {
-                    f.style.fontWeight = 'normal';
+                    f.classList.remove('active');
                 });
-                this.style.fontWeight = 'bold';
+                this.classList.add('active');
             });
         });
+
+        // Adicionar ao carrinho
+        document.querySelectorAll('.produto-card__quickview').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                const countElement = document.querySelector('.header__action-count');
+                let count = parseInt(countElement.textContent) || 0;
+                countElement.textContent = count + 1;
+                
+                const button = this;
+                const originalText = button.textContent;
+                button.textContent = 'Adicionado!';
+                button.style.backgroundColor = '#4CAF50';
+                
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.style.backgroundColor = '';
+                }, 2000);
+            });
+        });
+        
+        // Melhorar a experiência de toque em dispositivos móveis
+        document.addEventListener('touchstart', function() {}, {passive: true});
+
+        // Adicionar ao carrinho
+function adicionarAoCarrinho(produtoId, quantidade = 1) {
+    fetch('/api/carrinho/adicionar', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            produto_id: produtoId,
+            quantidade: quantidade
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Atualizar contador do carrinho
+            document.querySelectorAll('.header__action-count').forEach(el => {
+                el.textContent = data.total_itens;
+            });
+            
+            // Feedback visual
+            alert('Produto adicionado ao carrinho!');
+        }
+    });
+}
+
+// Usar nos botões "Visualização Rápida"
+document.querySelectorAll('.produto-card__quickview').forEach(button => {
+    button.addEventListener('click', function(e) {
+        e.preventDefault();
+        const produtoCard = this.closest('.produto-card');
+        // Você precisaria adicionar data attributes aos produtos
+        const produtoId = produtoCard.dataset.produtoId;
+        adicionarAoCarrinho(produtoId, 1);
+    });
+});
     </script>
 </body>
 </html>

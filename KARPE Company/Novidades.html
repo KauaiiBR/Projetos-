@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roupas | KARPE</title>
+    <title>Novidades | KARPE</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* RESET & BASE STYLES */
@@ -43,7 +43,7 @@
         }
 
         .container {
-            width: 100%;
+            width: 90%;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
@@ -126,9 +126,14 @@
 
         .header__action {
             margin-left: 20px;
-            font-size: 2rem;
+            font-size: 1.6rem;
             cursor: pointer;
             position: relative;
+        }
+
+        .header__action a {
+            color: var(--black);
+            text-decoration: none;
         }
 
         .header__action svg {
@@ -174,8 +179,8 @@
             transform-origin: center;
         }
 
-        /* HERO ROUPAS */
-        .hero-roupas {
+        /* HERO NOVIDADES */
+        .hero-novidades {
             height: 70vh;
             display: flex;
             align-items: center;
@@ -184,7 +189,7 @@
             margin-top: 80px;
         }
 
-        .hero-roupas__image {
+        .hero-novidades__image {
             position: absolute;
             top: 0;
             left: 0;
@@ -194,7 +199,7 @@
             z-index: 1;
         }
 
-        .hero-roupas__content {
+        .hero-novidades__content {
             position: relative;
             z-index: 2;
             max-width: 60%;
@@ -203,7 +208,7 @@
             padding: 0 20px;
         }
 
-        .hero-roupas__title {
+        .hero-novidades__title {
             font-size: 6.4rem;
             font-weight: 400;
             line-height: 1;
@@ -211,126 +216,87 @@
             letter-spacing: -0.05em;
         }
 
-        .hero-roupas__subtitle {
+        .hero-novidades__subtitle {
             font-size: 1.8rem;
             font-weight: 400;
             margin-bottom: 3rem;
             letter-spacing: 0.1em;
         }
 
-        /* CATEGORIAS */
-        .categorias {
+        /* DESTAQUES */
+        .destaques {
             padding: var(--spacing) 0;
         }
 
-        .categorias__title {
-            font-size: 3.6rem;
-            font-weight: 400;
+        .destaques__header {
             text-align: center;
             margin-bottom: 6rem;
         }
 
-        .categorias__grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
-
-        .categoria-card {
-            position: relative;
-            overflow: hidden;
-            height: 400px;
-            cursor: pointer;
-        }
-
-        .categoria-card__image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .categoria-card:hover .categoria-card__image {
-            transform: scale(1.05);
-        }
-
-        .categoria-card__content {
-            position: absolute;
-            bottom: 30px;
-            left: 30px;
-        }
-
-        .categoria-card__title {
-            font-size: 1.8rem;
-            color: var(--white);
-            margin-bottom: 10px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-        }
-
-        /* PRODUTOS */
-        .produtos {
-            padding: var(--spacing) 0;
-            background-color: var(--gray-1);
-        }
-
-        .produtos__header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            margin-bottom: 6rem;
-            flex-wrap: wrap;
-        }
-
-        .produtos__title {
+        .destaques__title {
             font-size: 3.6rem;
             font-weight: 400;
-            margin-bottom: 20px;
+            margin-bottom: 2rem;
         }
 
-        .produtos__filters {
+        .destaques__tabs {
             display: flex;
-            align-items: center;
+            justify-content: center;
+            margin-bottom: 4rem;
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 10px;
         }
 
-        .produtos__filter {
+        .destaques__tab {
+            padding: 10px 20px;
             font-size: 1.4rem;
             cursor: pointer;
             position: relative;
-            padding: 5px 0;
-        }
-
-        .produtos__filter:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background-color: var(--black);
+            border: 1px solid transparent;
+            border-radius: 4px;
             transition: var(--transition);
         }
 
-        .produtos__filter:hover:after, .produtos__filter.active:after {
-            width: 100%;
+        .destaques__tab:hover {
+            background-color: var(--gray-1);
         }
 
-        .produtos__grid {
+        .destaques__tab--active {
+            font-weight: 600;
+            border-color: var(--black);
+        }
+
+        .destaques__tab--active:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: var(--black);
+        }
+
+        .destaques__grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
+            gap: 40px;
         }
 
-        .produto-card {
+        .destaque-card {
             position: relative;
-            background: var(--white);
             border-radius: 8px;
             overflow: hidden;
+            background-color: var(--white);
             box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: var(--transition);
         }
 
-        .produto-card__badge {
+        .destaque-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .destaque-card__badge {
             position: absolute;
             top: 15px;
             right: 15px;
@@ -343,59 +309,126 @@
             border-radius: 3px;
         }
 
-        .produto-card__image-container {
+        .destaque-card__image-container {
             position: relative;
             overflow: hidden;
             margin-bottom: 20px;
             height: 400px;
         }
 
-        .produto-card__image {
+        .destaque-card__image {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: var(--transition);
         }
 
-        .produto-card:hover .produto-card__image {
+        .destaque-card:hover .destaque-card__image {
             transform: scale(1.03);
         }
 
-        .produto-card__quickview {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 15px;
-            background-color: var(--black);
-            color: var(--white);
-            text-align: center;
-            font-size: 1.4rem;
-            letter-spacing: 0.1em;
-            transform: translateY(100%);
-            transition: var(--transition);
-            cursor: pointer;
-            border: none;
-            outline: none;
-        }
-
-        .produto-card:hover .produto-card__quickview {
-            transform: translateY(0);
-        }
-
-        .produto-card__content {
+        .destaque-card__content {
             padding: 0 20px 20px;
         }
 
-        .produto-card__title {
-            font-size: 1.6rem;
-            margin-bottom: 8px;
+        .destaque-card__date {
+            font-size: 1.2rem;
+            color: var(--gray-4);
+            margin-bottom: 10px;
         }
 
-        .produto-card__price {
-            font-size: 1.6rem;
+        .destaque-card__title {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .destaque-card__excerpt {
+            font-size: 1.4rem;
             color: var(--gray-5);
-            font-weight: 500;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .destaque-card__link {
+            font-size: 1.4rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            color: var(--black);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .destaque-card__link i {
+            margin-left: 10px;
+            transition: var(--transition);
+        }
+
+        .destaque-card__link:hover {
+            color: var(--gray-5);
+        }
+
+        .destaque-card__link:hover i {
+            transform: translateX(5px);
+        }
+
+        /* NEWSLETTER */
+        .newsletter {
+            padding: var(--spacing) 0;
+            background-color: var(--gray-1);
+        }
+
+        .newsletter__inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .newsletter__content {
+            max-width: 40%;
+            margin-bottom: 30px;
+        }
+
+        .newsletter__title {
+            font-size: 3.6rem;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+
+        .newsletter__form {
+            display: flex;
+            width: 50%;
+            flex-wrap: wrap;
+        }
+
+        .newsletter__input {
+            flex: 1;
+            padding: 20px;
+            border: 1px solid var(--black);
+            border-right: none;
+            font-size: 1.4rem;
+            background-color: transparent;
+            min-width: 250px;
+        }
+
+        .newsletter__submit {
+            padding: 0 40px;
+            border: 1px solid var(--black);
+            background-color: var(--black);
+            color: var(--white);
+            font-size: 1.4rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .newsletter__submit:hover {
+            background-color: var(--white);
+            color: var(--black);
         }
 
         /* FOOTER */
@@ -471,41 +504,39 @@
 
         /* RESPONSIVE STYLES */
         @media (max-width: 1200px) {
-            .categorias__grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-
-            .produtos__grid {
+            .destaques__grid {
                 grid-template-columns: repeat(2, 1fr);
             }
             
-            .hero-roupas__title {
-                font-size: 5.4rem;
+            .newsletter__inner {
+                flex-direction: column;
+            }
+            
+            .newsletter__content {
+                max-width: 100%;
+                margin-bottom: 40px;
+            }
+            
+            .newsletter__form {
+                width: 100%;
             }
         }
 
         @media (max-width: 992px) {
             :root {
                 --spacing: 80px;
-                --spacing-md: 60px;
-                --spacing-sm: 30px;
             }
             
-            .header__nav-item {
-                margin-left: 20px;
+            .hero-novidades__content {
+                max-width: 80%;
             }
             
-            .hero-roupas__content {
-                max-width: 70%;
-            }
-            
-            .hero-roupas__title {
-                font-size: 4.8rem;
+            .hero-novidades__title {
+                font-size: 5.4rem;
             }
             
             .footer__top {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 30px;
             }
         }
 
@@ -545,108 +576,70 @@
             .header__actions {
                 margin-left: auto;
             }
-            
-            .hero-roupas {
+
+            .hero-novidades {
                 height: 60vh;
                 margin-top: 70px;
             }
             
-            .hero-roupas__content {
+            .hero-novidades__content {
                 max-width: 100%;
                 text-align: center;
             }
             
-            .hero-roupas__title {
-                font-size: 4rem;
+            .hero-novidades__title {
+                font-size: 4.8rem;
             }
             
-            .hero-roupas__subtitle {
+            .hero-novidades__subtitle {
                 font-size: 1.6rem;
             }
             
-            .categorias__grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .categoria-card {
-                height: 300px;
-            }
-            
-            .produtos__header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
-            .produtos__filters {
-                width: 100%;
+            .destaques__tabs {
+                justify-content: flex-start;
                 overflow-x: auto;
                 padding-bottom: 10px;
                 -ms-overflow-style: none;
                 scrollbar-width: none;
             }
             
-            .produtos__filters::-webkit-scrollbar {
+            .destaques__tabs::-webkit-scrollbar {
                 display: none;
             }
             
-            .produtos__grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 20px;
+            .destaques__grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
             }
             
-            .produto-card__image-container {
-                height: 320px;
+            .destaque-card__image-container {
+                height: 300px;
             }
         }
 
         @media (max-width: 576px) {
-            .header {
-                padding: 15px 0;
+            .container {
+                padding: 0 15px;
             }
-            
-            .header__logo {
-                font-size: 2rem;
-            }
-            
-            .header__action {
-                margin-left: 15px;
-            }
-            
-            .header__action svg {
-                width: 20px;
-                height: 20px;
-            }
-            
-            .hero-roupas {
+
+            .hero-novidades {
                 height: 50vh;
             }
-            
-            .hero-roupas__title {
-                font-size: 3.2rem;
+
+            .hero-novidades__title {
+                font-size: 3.6rem;
             }
             
-            .hero-roupas__subtitle {
+            .hero-novidades__subtitle {
                 font-size: 1.4rem;
             }
             
-            .categorias__title, .produtos__title {
+            .destaques__title {
                 font-size: 2.8rem;
             }
             
-            .categorias__grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .categoria-card {
+            .destaque-card__image-container {
                 height: 250px;
-            }
-            
-            .produtos__grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .produto-card__image-container {
-                height: 350px;
             }
             
             .footer__top {
@@ -661,24 +654,34 @@
             .footer__social {
                 justify-content: center;
             }
+            
+            .newsletter__form {
+                flex-direction: column;
+            }
+            
+            .newsletter__input {
+                border-right: 1px solid var(--black);
+                border-bottom: none;
+                min-width: auto;
+            }
+            
+            .newsletter__submit {
+                padding: 15px;
+                width: 100%;
+            }
         }
 
         @media (max-width: 400px) {
-            .container {
-                padding: 0 15px;
+            .hero-novidades__title {
+                font-size: 3rem;
             }
             
-            .hero-roupas__title {
-                font-size: 2.8rem;
+            .destaque-card__content {
+                padding: 0 15px 15px;
             }
             
-            .categoria-card__content {
-                bottom: 20px;
-                left: 20px;
-            }
-            
-            .produto-card__image-container {
-                height: 280px;
+            .destaque-card__title {
+                font-size: 1.6rem;
             }
         }
 
@@ -710,16 +713,16 @@
                 <nav class="header__nav" id="nav">
                     <ul class="header__nav-list">
                         <li class="header__nav-item">
-                            <a href="Novidades.html" class="header__nav-link">Novidades</a>
+                            <a href="/" class="header__nav-link">Novidades</a>
                         </li>
                         <li class="header__nav-item">
-                            <a class='header__nav-link' href='Roupas.html'>Roupas</a>
+                            <a href="Roupas.html" class="header__nav-link">Roupas</a>
                         </li>
                         <li class="header__nav-item">
                             <a href="Calçados.html" class="header__nav-link">Calçados</a>
                         </li>
                         <li class="header__nav-item">
-                            <a class='header__nav-link' href='SkinCare.html'>Skincare</a>
+                            <a href="SkinCare.html" class="header__nav-link">Skincare</a>
                         </li>
                     </ul>
                 </nav>
@@ -728,8 +731,8 @@
                         <i class="fas fa-search"></i>
                     </div>
                     <div class="header__action">
-                        <a href="carrinho.html"></a>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="24" height="24">
+                        <a href="carrinho.html">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
                                 <path d="M24 48C10.7 48 0 58.7 0 72C0 85.3 10.7 96 24 96L69.3 96C73.2 96 76.5 98.8 77.2 102.6L129.3 388.9C135.5 423.1 165.3 448 200.1 448L456 448C469.3 448 480 437.3 480 424C480 410.7 469.3 400 456 400L200.1 400C188.5 400 178.6 391.7 176.5 380.3L171.4 352L475 352C505.8 352 532.2 330.1 537.9 299.8L568.9 133.9C572.6 114.2 557.5 96 537.4 96L124.7 96L124.3 94C119.5 67.4 96.3 48 69.2 48L24 48zM208 576C234.5 576 256 554.5 256 528C256 501.5 234.5 480 208 480C181.5 480 160 501.5 160 528C160 554.5 181.5 576 208 576zM432 576C458.5 576 480 554.5 480 528C480 501.5 458.5 480 432 480C405.5 480 384 501.5 384 528C384 554.5 405.5 576 432 576z"/>
                             </svg>
                             <span class="header__action-count">0</span>
@@ -740,137 +743,126 @@
         </div>
     </header>
 
-    <!-- HERO ROUPAS -->
-    <section class="hero-roupas">
-        <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Coleção de Roupas" class="hero-roupas__image">
+    <!-- HERO NOVIDADES -->
+    <section class="hero-novidades">
+        <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Novidades KARPE" class="hero-novidades__image">
         <div class="container">
-            <div class="hero-roupas__content">
-                <h1 class="hero-roupas__title">COLEÇÃO ROUPAS</h1>
-                <p class="hero-roupas__subtitle">Peças essenciais para um guarda-roupa atemporal</p>
+            <div class="hero-novidades__content">
+                <h1 class="hero-novidades__title">NOVIDADES</h1>
+                <p class="hero-novidades__subtitle">Descubra os últimos lançamentos e tendências da KARPE</p>
             </div>
         </div>
     </section>
 
-    <!-- CATEGORIAS -->
-    <section class="categorias section">
+    <!-- DESTAQUES -->
+    <section class="destaques section">
         <div class="container">
-            <h2 class="categorias__title">Explore por Categoria</h2>
-            <div class="categorias__grid">
-                <div class="categoria-card">
-                    <img src="https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Camisetas" class="categoria-card__image">
-                    <div class="categoria-card__content">
-                        <h3 class="categoria-card__title">Camisetas</h3>
+            <div class="destaques__header">
+                <h2 class="destaques__title">Destaques</h2>
+                <div class="destaques__tabs">
+                    <div class="destaques__tab destaques__tab--active">Todos</div>
+                    <div class="destaques__tab">Lançamentos</div>
+                    <div class="destaques__tab">Tendências</div>
+                    <div class="destaques__tab">Inspiração</div>
+                </div>
+            </div>
+            <div class="destaques__grid">
+                <!-- Destaque 1 -->
+                <div class="destaque-card">
+                    <div class="destaque-card__image-container">
+                        <span class="destaque-card__badge">Novo</span>
+                        <img src="https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Coleção Outono/Inverno 2025" class="destaque-card__image">
+                    </div>
+                    <div class="destaque-card__content">
+                        <p class="destaque-card__date">15 JUL 2025</p>
+                        <h3 class="destaque-card__title">Coleção Outono/Inverno 2025</h3>
+                        <p class="destaque-card__excerpt">Conheça as peças essenciais para a estação mais fria do ano, com materiais premium e design atemporal.</p>
+                        <a href="#" class="destaque-card__link">Ver mais <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
-                <div class="categoria-card">
-                    <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=736&q=80" alt="Calças" class="categoria-card__image">
-                    <div class="categoria-card__content">
-                        <h3 class="categoria-card__title">Calças</h3>
+
+                <!-- Destaque 2 -->
+                <div class="destaque-card">
+                    <div class="destaque-card__image-container">
+                        <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Guia de Estilo Urbano" class="destaque-card__image">
+                    </div>
+                    <div class="destaque-card__content">
+                        <p class="destaque-card__date">10 JUL 2025</p>
+                        <h3 class="destaque-card__title">Guia de Estilo Urbano</h3>
+                        <p class="destaque-card__excerpt">Como combinar peças básicas para criar looks sofisticados no dia a dia.</p>
+                        <a href="#" class="destaque-card__link">Ver mais <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
-                <div class="categoria-card">
-                    <img src="https://images.unsplash.com/photo-1539533018447-63fcce2678e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Casacos" class="categoria-card__image">
-                    <div class="categoria-card__content">
-                        <h3 class="categoria-card__title">Casacos</h3>
+
+                <!-- Destaque 3 -->
+                <div class="destaque-card">
+                    <div class="destaque-card__image-container">
+                        <span class="destaque-card__badge">Exclusivo</span>
+                        <img src="https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Entrevista com o Designer" class="destaque-card__image">
+                    </div>
+                    <div class="destaque-card__content">
+                        <p class="destaque-card__date">5 JUL 2025</p>
+                        <h3 class="destaque-card__title">Entrevista com o Designer</h3>
+                        <p class="destaque-card__excerpt">Conheça o processo criativo por trás das novas peças da KARPE em uma conversa exclusiva.</p>
+                        <a href="#" class="destaque-card__link">Ver mais <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
-                <div class="categoria-card">
-                    <img src="https://images.unsplash.com/photo-1595341595379-cf1cd0fb7fb3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Acessórios" class="categoria-card__image">
-                    <div class="categoria-card__content">
-                        <h3 class="categoria-card__title">Acessórios</h3>
+
+                <!-- Destaque 4 -->
+                <div class="destaque-card">
+                    <div class="destaque-card__image-container">
+                        <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=736&q=80" alt="Sustentabilidade na Moda" class="destaque-card__image">
+                    </div>
+                    <div class="destaque-card__content">
+                        <p class="destaque-card__date">28 JUN 2025</p>
+                        <h3 class="destaque-card__title">Sustentabilidade na Moda</h3>
+                        <p class="destaque-card__excerpt">Como a KARPE está reduzindo seu impacto ambiental com novas práticas e materiais.</p>
+                        <a href="#" class="destaque-card__link">Ver mais <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Destaque 5 -->
+                <div class="destaque-card">
+                    <div class="destaque-card__image-container">
+                        <span class="destaque-card__badge">Dica</span>
+                        <img src="https://images.unsplash.com/photo-1539533018447-63fcce2678e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Como Cuidar das Suas Peças" class="destaque-card__image">
+                    </div>
+                    <div class="destaque-card__content">
+                        <p class="destaque-card__date">20 JUN 2025</p>
+                        <h3 class="destaque-card__title">Como Cuidar das Suas Peças</h3>
+                        <p class="destaque-card__excerpt">Dicas essenciais para manter suas roupas e acessórios KARPE como novos por mais tempo.</p>
+                        <a href="#" class="destaque-card__link">Ver mais <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Destaque 6 -->
+                <div class="destaque-card">
+                    <div class="destaque-card__image-container">
+                        <img src="https://images.unsplash.com/photo-1595341595379-cf1cd0fb7fb3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Evento de Lançamento" class="destaque-card__image">
+                    </div>
+                    <div class="destaque-card__content">
+                        <p class="destaque-card__date">15 JUN 2025</p>
+                        <h3 class="destaque-card__title">Evento de Lançamento</h3>
+                        <p class="destaque-card__excerpt">Participe do nosso evento exclusivo de lançamento da nova coleção com descontos especiais.</p>
+                        <a href="#" class="destaque-card__link">Ver mais <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- PRODUTOS -->
-    <section class="produtos section">
+    <!-- NEWSLETTER -->
+    <section class="newsletter section">
         <div class="container">
-            <div class="produtos__header">
-                <h2 class="produtos__title">Todos os Produtos</h2>
-                <div class="produtos__filters">
-                    <div class="produtos__filter active">Todos</div>
-                    <div class="produtos__filter">Novidades</div>
-                    <div class="produtos__filter">Mais Vendidos</div>
-                    <div class="produtos__filter">Coleção Outono/Inverno</div>
+            <div class="newsletter__inner">
+                <div class="newsletter__content">
+                    <h2 class="newsletter__title">Fique por Dentro</h2>
+                    <p>Receba as novidades, lançamentos exclusivos e ofertas especiais da KARPE diretamente no seu email.</p>
                 </div>
-            </div>
-            <div class="produtos__grid">
-                <!-- Produto 1 -->
-                <div class="produto-card">
-                    <div class="produto-card__image-container">
-                        <span class="produto-card__badge">Novidade</span>
-                        <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=725&q=80" alt="Camiseta Essential" class="produto-card__image">
-                        <button class="produto-card__quickview">Visualização Rápida</button>
-                    </div>
-                    <div class="produto-card__content">
-                        <h3 class="produto-card__title">Camiseta Essential</h3>
-                        <p class="produto-card__price">R$ 149,90</p>
-                    </div>
-                </div>
-
-                <!-- Produto 2 -->
-                <div class="produto-card">
-                    <div class="produto-card__image-container">
-                        <span class="produto-card__badge">Mais Vendido</span>
-                        <img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Calça Slim Fit" class="produto-card__image">
-                        <button class="produto-card__quickview">Visualização Rápida</button>
-                    </div>
-                    <div class="produto-card__content">
-                        <h3 class="produto-card__title">Calça Slim Fit</h3>
-                        <p class="produto-card__price">R$ 299,90</p>
-                    </div>
-                </div>
-
-                <!-- Produto 3 -->
-                <div class="produto-card">
-                    <div class="produto-card__image-container">
-                        <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=736&q=80" alt="Jaqueta Minimal" class="produto-card__image">
-                        <button class="produto-card__quickview">Visualização Rápida</button>
-                    </div>
-                    <div class="produto-card__content">
-                        <h3 class="produto-card__title">Jaqueta Minimal</h3>
-                        <p class="produto-card__price">R$ 399,90</p>
-                    </div>
-                </div>
-
-                <!-- Produto 4 -->
-                <div class="produto-card">
-                    <div class="produto-card__image-container">
-                        <img src="https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Camiseta Básica" class="produto-card__image">
-                        <button class="produto-card__quickview">Visualização Rápida</button>
-                    </div>
-                    <div class="produto-card__content">
-                        <h3 class="produto-card__title">Camiseta Básica</h3>
-                        <p class="produto-card__price">R$ 129,90</p>
-                    </div>
-                </div>
-
-                <!-- Produto 5 -->
-                <div class="produto-card">
-                    <div class="produto-card__image-container">
-                        <span class="produto-card__badge">Novidade</span>
-                        <img src="https://images.unsplash.com/photo-1539533018447-63fcce2678e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Blazer Premium" class="produto-card__image">
-                        <button class="produto-card__quickview">Visualização Rápida</button>
-                    </div>
-                    <div class="produto-card__content">
-                        <h3 class="produto-card__title">Blazer Premium</h3>
-                        <p class="produto-card__price">R$ 599,90</p>
-                    </div>
-                </div>
-
-                <!-- Produto 6 -->
-                <div class="produto-card">
-                    <div class="produto-card__image-container">
-                        <img src="https://images.unsplash.com/photo-1595341595379-cf1cd0fb7fb3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Cinto de Couro" class="produto-card__image">
-                        <button class="produto-card__quickview">Visualização Rápida</button>
-                    </div>
-                    <div class="produto-card__content">
-                        <h3 class="produto-card__title">Cinto de Couro</h3>
-                        <p class="produto-card__price">R$ 199,90</p>
-                    </div>
-                </div>
+                <form class="newsletter__form">
+                    <input type="email" class="newsletter__input" placeholder="Seu melhor email" required>
+                    <button type="submit" class="newsletter__submit">Inscrever</button>
+                </form>
             </div>
         </div>
     </section>
@@ -887,15 +879,15 @@
                     <h4 class="footer__title">Loja</h4>
                     <ul class="footer__links">
                         <li class="footer__link"><a href="Novidades.html">Novidades</a></li>
-                        <li class="footer__link"><a href='Roupas.html'>Roupas</a></li>
+                        <li class="footer__link"><a href="Roupas.html">Roupas</a></li>
                         <li class="footer__link"><a href="Calçados.html">Calçados</a></li>
-                        <li class="footer__link"><a href='SkinCare.html'>Skincare</a></li>
+                        <li class="footer__link"><a href="SkinCare.html">Skincare</a></li>
                     </ul>
                 </div>
                 <div class="footer__col">
                     <h4 class="footer__title">Informações</h4>
                     <ul class="footer__links">
-                        <li class="footer__link"><a href="KARPE.html">Sobre nós</a></li>
+                        <li class="footer__link"><a href="index.html">Sobre nós</a></li>
                         <li class="footer__link"><a href="#">Trocas e devoluções</a></li>
                         <li class="footer__link"><a href="#">Entregas</a></li>
                         <li class="footer__link"><a href="Politica de privacidade.html">Política de privacidade</a></li>
@@ -970,75 +962,28 @@
             }
         });
 
-        // Filtros de produtos
-        document.querySelectorAll('.produtos__filter').forEach(filter => {
-            filter.addEventListener('click', function() {
-                document.querySelectorAll('.produtos__filter').forEach(f => {
-                    f.classList.remove('active');
+        // Tabs de destaques
+        document.querySelectorAll('.destaques__tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.destaques__tab').forEach(t => {
+                    t.classList.remove('destaques__tab--active');
                 });
-                this.classList.add('active');
+                this.classList.add('destaques__tab--active');
             });
         });
 
-        // Adicionar ao carrinho
-        document.querySelectorAll('.produto-card__quickview').forEach(button => {
-            button.addEventListener('click', function(e) {
-                e.preventDefault();
-                const countElement = document.querySelector('.header__action-count');
-                let count = parseInt(countElement.textContent) || 0;
-                countElement.textContent = count + 1;
-                
-                const button = this;
-                const originalText = button.textContent;
-                button.textContent = 'Adicionado!';
-                button.style.backgroundColor = '#4CAF50';
-                
-                setTimeout(() => {
-                    button.textContent = originalText;
-                    button.style.backgroundColor = '';
-                }, 2000);
-            });
+        // Newsletter form
+        document.querySelector('.newsletter__form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('.newsletter__input').value;
+            if (email) {
+                alert('Obrigado por se inscrever! Você receberá nossas novidades em breve.');
+                this.querySelector('.newsletter__input').value = '';
+            }
         });
-        
+
         // Melhorar a experiência de toque em dispositivos móveis
         document.addEventListener('touchstart', function() {}, {passive: true});
-
-        // Adicionar ao carrinho
-function adicionarAoCarrinho(produtoId, quantidade = 1) {
-    fetch('/api/carrinho/adicionar', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            produto_id: produtoId,
-            quantidade: quantidade
-        })
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            // Atualizar contador do carrinho
-            document.querySelectorAll('.header__action-count').forEach(el => {
-                el.textContent = data.total_itens;
-            });
-            
-            // Feedback visual
-            alert('Produto adicionado ao carrinho!');
-        }
-    });
-}
-
-// Usar nos botões "Visualização Rápida"
-document.querySelectorAll('.produto-card__quickview').forEach(button => {
-    button.addEventListener('click', function(e) {
-        e.preventDefault();
-        const produtoCard = this.closest('.produto-card');
-        // Você precisaria adicionar data attributes aos produtos
-        const produtoId = produtoCard.dataset.produtoId;
-        adicionarAoCarrinho(produtoId, 1);
-    });
-});
     </script>
 </body>
 </html>

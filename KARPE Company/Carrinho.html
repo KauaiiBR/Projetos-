@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roupas | KARPE</title>
+    <title>Carrinho | KARPE</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* RESET & BASE STYLES */
@@ -43,7 +43,7 @@
         }
 
         .container {
-            width: 100%;
+            width: 90%;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
@@ -126,9 +126,14 @@
 
         .header__action {
             margin-left: 20px;
-            font-size: 2rem;
+            font-size: 1.6rem;
             cursor: pointer;
             position: relative;
+        }
+
+        .header__action a {
+            color: var(--black);
+            text-decoration: none;
         }
 
         .header__action svg {
@@ -174,36 +179,25 @@
             transform-origin: center;
         }
 
-        /* HERO ROUPAS */
-        .hero-roupas {
-            height: 70vh;
+        /* HERO CARRINHO */
+        .hero-carrinho {
+            height: 40vh;
             display: flex;
             align-items: center;
             position: relative;
             overflow: hidden;
             margin-top: 80px;
+            background-color: var(--gray-1);
         }
 
-        .hero-roupas__image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 1;
-        }
-
-        .hero-roupas__content {
+        .hero-carrinho__content {
             position: relative;
             z-index: 2;
-            max-width: 60%;
-            color: var(--white);
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-            padding: 0 20px;
+            width: 100%;
+            text-align: center;
         }
 
-        .hero-roupas__title {
+        .hero-carrinho__title {
             font-size: 6.4rem;
             font-weight: 400;
             line-height: 1;
@@ -211,191 +205,279 @@
             letter-spacing: -0.05em;
         }
 
-        .hero-roupas__subtitle {
-            font-size: 1.8rem;
-            font-weight: 400;
-            margin-bottom: 3rem;
+        .hero-carrinho__breadcrumb {
+            font-size: 1.4rem;
             letter-spacing: 0.1em;
+            text-transform: uppercase;
         }
 
-        /* CATEGORIAS */
-        .categorias {
+        .hero-carrinho__breadcrumb a {
+            color: var(--gray-5);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .hero-carrinho__breadcrumb a:hover {
+            color: var(--black);
+        }
+
+        .hero-carrinho__breadcrumb span {
+            margin: 0 10px;
+            color: var(--gray-4);
+        }
+
+        /* CARRINHO */
+        .carrinho {
             padding: var(--spacing) 0;
         }
 
-        .categorias__title {
-            font-size: 3.6rem;
-            font-weight: 400;
-            text-align: center;
-            margin-bottom: 6rem;
+        .carrinho__container {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 60px;
         }
 
-        .categorias__grid {
+        .carrinho__title {
+            font-size: 2.4rem;
+            font-weight: 400;
+            margin-bottom: 40px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .carrinho__items {
+            border-bottom: 1px solid var(--gray-2);
+            margin-bottom: 40px;
+        }
+
+        .carrinho-item {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: 120px 1fr 150px;
+            gap: 30px;
+            padding: 30px 0;
+            border-top: 1px solid var(--gray-2);
+        }
+
+        .carrinho-item__image {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .carrinho-item__details {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .carrinho-item__title {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+        }
+
+        .carrinho-item__variant {
+            font-size: 1.4rem;
+            color: var(--gray-5);
+            margin-bottom: 15px;
+        }
+
+        .carrinho-item__remove {
+            font-size: 1.2rem;
+            color: var(--gray-5);
+            text-decoration: underline;
+            cursor: pointer;
+            transition: var(--transition);
+            background: none;
+            border: none;
+            text-align: left;
+            padding: 0;
+        }
+
+        .carrinho-item__remove:hover {
+            color: var(--black);
+        }
+
+        .carrinho-item__price {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-end;
+        }
+
+        .carrinho-item__current-price {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .carrinho-item__quantity {
+            display: flex;
+            align-items: center;
+        }
+
+        .carrinho-item__quantity-btn {
+            width: 30px;
+            height: 30px;
+            background-color: var(--gray-1);
+            border: none;
+            font-size: 1.6rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carrinho-item__quantity-btn:hover {
+            background-color: var(--gray-2);
+        }
+
+        .carrinho-item__quantity-input {
+            width: 50px;
+            height: 30px;
+            text-align: center;
+            border: 1px solid var(--gray-2);
+            margin: 0 5px;
+            font-size: 1.4rem;
+        }
+
+        .carrinho__actions {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
             gap: 20px;
         }
 
-        .categoria-card {
-            position: relative;
-            overflow: hidden;
-            height: 400px;
-            cursor: pointer;
-        }
-
-        .categoria-card__image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .categoria-card:hover .categoria-card__image {
-            transform: scale(1.05);
-        }
-
-        .categoria-card__content {
-            position: absolute;
-            bottom: 30px;
-            left: 30px;
-        }
-
-        .categoria-card__title {
-            font-size: 1.8rem;
-            color: var(--white);
-            margin-bottom: 10px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-        }
-
-        /* PRODUTOS */
-        .produtos {
-            padding: var(--spacing) 0;
-            background-color: var(--gray-1);
-        }
-
-        .produtos__header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            margin-bottom: 6rem;
-            flex-wrap: wrap;
-        }
-
-        .produtos__title {
-            font-size: 3.6rem;
-            font-weight: 400;
-            margin-bottom: 20px;
-        }
-
-        .produtos__filters {
+        .carrinho__continue {
+            font-size: 1.4rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--black);
             display: flex;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
+            padding: 10px 0;
         }
 
-        .produtos__filter {
+        .carrinho__continue i {
+            margin-right: 10px;
+        }
+
+        .carrinho__update {
+            background: none;
+            border: none;
             font-size: 1.4rem;
-            cursor: pointer;
-            position: relative;
-            padding: 5px 0;
-        }
-
-        .produtos__filter:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background-color: var(--black);
-            transition: var(--transition);
-        }
-
-        .produtos__filter:hover:after, .produtos__filter.active:after {
-            width: 100%;
-        }
-
-        .produtos__grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-
-        .produto-card {
-            position: relative;
-            background: var(--white);
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-        }
-
-        .produto-card__badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background-color: var(--black);
-            color: var(--white);
-            padding: 5px 10px;
-            font-size: 1.2rem;
             letter-spacing: 0.1em;
-            z-index: 2;
-            border-radius: 3px;
+            text-transform: uppercase;
+            cursor: pointer;
+            text-decoration: underline;
+            padding: 10px 0;
         }
 
-        .produto-card__image-container {
-            position: relative;
-            overflow: hidden;
-            margin-bottom: 20px;
-            height: 400px;
+        /* RESUMO DO PEDIDO */
+        .resumo {
+            background-color: var(--gray-1);
+            padding: 30px;
+            border-radius: 8px;
+            position: sticky;
+            top: 120px;
         }
 
-        .produto-card__image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
+        .resumo__title {
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin-bottom: 30px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
         }
 
-        .produto-card:hover .produto-card__image {
-            transform: scale(1.03);
+        .resumo__row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
         }
 
-        .produto-card__quickview {
-            position: absolute;
-            bottom: 0;
-            left: 0;
+        .resumo__row--total {
+            font-size: 1.6rem;
+            font-weight: 500;
+            padding-top: 15px;
+            border-top: 1px solid var(--gray-2);
+            margin-top: 15px;
+        }
+
+        .resumo__checkout {
             width: 100%;
             padding: 15px;
             background-color: var(--black);
             color: var(--white);
-            text-align: center;
+            border: none;
             font-size: 1.4rem;
             letter-spacing: 0.1em;
-            transform: translateY(100%);
-            transition: var(--transition);
+            text-transform: uppercase;
+            margin-top: 30px;
             cursor: pointer;
-            border: none;
-            outline: none;
+            transition: var(--transition);
+            border-radius: 4px;
         }
 
-        .produto-card:hover .produto-card__quickview {
-            transform: translateY(0);
+        .resumo__checkout:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
         }
 
-        .produto-card__content {
-            padding: 0 20px 20px;
+        .resumo__note {
+            margin-top: 30px;
+            font-size: 1.2rem;
+            color: var(--gray-5);
+            text-align: center;
         }
 
-        .produto-card__title {
-            font-size: 1.6rem;
-            margin-bottom: 8px;
+        /* CARRINHO VAZIO */
+        .carrinho-vazio {
+            text-align: center;
+            padding: 80px 0;
+            display: none;
         }
 
-        .produto-card__price {
+        .carrinho-vazio__icon {
+            font-size: 5rem;
+            margin-bottom: 30px;
+            color: var(--gray-3);
+        }
+
+        .carrinho-vazio__title {
+            font-size: 2.4rem;
+            margin-bottom: 20px;
+        }
+
+        .carrinho-vazio__text {
             font-size: 1.6rem;
             color: var(--gray-5);
-            font-weight: 500;
+            margin-bottom: 40px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .carrinho-vazio__btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: var(--black);
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.4rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: var(--transition);
+            border-radius: 4px;
+        }
+
+        .carrinho-vazio__btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
         }
 
         /* FOOTER */
@@ -471,41 +553,19 @@
 
         /* RESPONSIVE STYLES */
         @media (max-width: 1200px) {
-            .categorias__grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-
-            .produtos__grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .hero-roupas__title {
-                font-size: 5.4rem;
+            .carrinho__container {
+                gap: 40px;
             }
         }
 
         @media (max-width: 992px) {
-            :root {
-                --spacing: 80px;
-                --spacing-md: 60px;
-                --spacing-sm: 30px;
+            .carrinho__container {
+                grid-template-columns: 1fr;
             }
             
-            .header__nav-item {
-                margin-left: 20px;
-            }
-            
-            .hero-roupas__content {
-                max-width: 70%;
-            }
-            
-            .hero-roupas__title {
-                font-size: 4.8rem;
-            }
-            
-            .footer__top {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 30px;
+            .resumo {
+                margin-top: 60px;
+                position: static;
             }
         }
 
@@ -545,112 +605,73 @@
             .header__actions {
                 margin-left: auto;
             }
-            
-            .hero-roupas {
-                height: 60vh;
-                margin-top: 70px;
+
+            .hero-carrinho {
+                height: 30vh;
             }
             
-            .hero-roupas__content {
-                max-width: 100%;
-                text-align: center;
+            .hero-carrinho__title {
+                font-size: 4.8rem;
             }
             
-            .hero-roupas__title {
-                font-size: 4rem;
-            }
-            
-            .hero-roupas__subtitle {
-                font-size: 1.6rem;
-            }
-            
-            .categorias__grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .categoria-card {
-                height: 300px;
-            }
-            
-            .produtos__header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
-            .produtos__filters {
-                width: 100%;
-                overflow-x: auto;
-                padding-bottom: 10px;
-                -ms-overflow-style: none;
-                scrollbar-width: none;
-            }
-            
-            .produtos__filters::-webkit-scrollbar {
-                display: none;
-            }
-            
-            .produtos__grid {
-                grid-template-columns: repeat(2, 1fr);
+            .carrinho-item {
+                grid-template-columns: 100px 1fr;
+                grid-template-rows: auto auto;
                 gap: 20px;
             }
             
-            .produto-card__image-container {
-                height: 320px;
+            .carrinho-item__price {
+                grid-column: 1 / -1;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                padding-top: 20px;
+                border-top: 1px solid var(--gray-2);
+            }
+            
+            .carrinho-item__current-price {
+                margin-bottom: 0;
+            }
+
+            .carrinho__actions {
+                flex-direction: column;
+                align-items: flex-start;
             }
         }
 
         @media (max-width: 576px) {
-            .header {
-                padding: 15px 0;
+            .container {
+                padding: 0 15px;
+            }
+
+            .hero-carrinho {
+                height: 25vh;
+                margin-top: 70px;
+            }
+
+            .hero-carrinho__title {
+                font-size: 3.6rem;
             }
             
-            .header__logo {
-                font-size: 2rem;
+            .carrinho-item {
+                grid-template-columns: 80px 1fr;
+                padding: 20px 0;
             }
             
-            .header__action {
-                margin-left: 15px;
+            .carrinho-item__image {
+                height: 120px;
             }
             
-            .header__action svg {
-                width: 20px;
-                height: 20px;
-            }
-            
-            .hero-roupas {
-                height: 50vh;
-            }
-            
-            .hero-roupas__title {
-                font-size: 3.2rem;
-            }
-            
-            .hero-roupas__subtitle {
+            .carrinho-item__title {
                 font-size: 1.4rem;
             }
             
-            .categorias__title, .produtos__title {
-                font-size: 2.8rem;
-            }
-            
-            .categorias__grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .categoria-card {
-                height: 250px;
-            }
-            
-            .produtos__grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .produto-card__image-container {
-                height: 350px;
+            .carrinho-item__variant {
+                font-size: 1.2rem;
             }
             
             .footer__top {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
             }
             
             .footer__bottom {
@@ -663,22 +684,34 @@
             }
         }
 
-        @media (max-width: 400px) {
-            .container {
-                padding: 0 15px;
+        @media (max-width: 480px) {
+            .hero-carrinho__title {
+                font-size: 3rem;
             }
-            
-            .hero-roupas__title {
-                font-size: 2.8rem;
+
+            .carrinho-item {
+                grid-template-columns: 1fr;
+                text-align: center;
             }
-            
-            .categoria-card__content {
-                bottom: 20px;
-                left: 20px;
+
+            .carrinho-item__image {
+                height: 200px;
+                width: 100%;
+                max-width: 200px;
+                margin: 0 auto;
             }
-            
-            .produto-card__image-container {
-                height: 280px;
+
+            .carrinho-item__price {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .footer__top {
+                grid-template-columns: 1fr;
+            }
+
+            .resumo {
+                padding: 20px;
             }
         }
 
@@ -710,16 +743,16 @@
                 <nav class="header__nav" id="nav">
                     <ul class="header__nav-list">
                         <li class="header__nav-item">
-                            <a href="Novidades.html" class="header__nav-link">Novidades</a>
+                            <a href="/" class="header__nav-link">Novidades</a>
                         </li>
                         <li class="header__nav-item">
-                            <a class='header__nav-link' href='Roupas.html'>Roupas</a>
+                            <a href="Roupas.html" class="header__nav-link">Roupas</a>
                         </li>
                         <li class="header__nav-item">
                             <a href="Calçados.html" class="header__nav-link">Calçados</a>
                         </li>
                         <li class="header__nav-item">
-                            <a class='header__nav-link' href='SkinCare.html'>Skincare</a>
+                            <a href="SkinCare.html" class="header__nav-link">Skincare</a>
                         </li>
                     </ul>
                 </nav>
@@ -729,10 +762,10 @@
                     </div>
                     <div class="header__action">
                         <a href="carrinho.html"></a>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="24" height="24">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
                                 <path d="M24 48C10.7 48 0 58.7 0 72C0 85.3 10.7 96 24 96L69.3 96C73.2 96 76.5 98.8 77.2 102.6L129.3 388.9C135.5 423.1 165.3 448 200.1 448L456 448C469.3 448 480 437.3 480 424C480 410.7 469.3 400 456 400L200.1 400C188.5 400 178.6 391.7 176.5 380.3L171.4 352L475 352C505.8 352 532.2 330.1 537.9 299.8L568.9 133.9C572.6 114.2 557.5 96 537.4 96L124.7 96L124.3 94C119.5 67.4 96.3 48 69.2 48L24 48zM208 576C234.5 576 256 554.5 256 528C256 501.5 234.5 480 208 480C181.5 480 160 501.5 160 528C160 554.5 181.5 576 208 576zM432 576C458.5 576 480 554.5 480 528C480 501.5 458.5 480 432 480C405.5 480 384 501.5 384 528C384 554.5 405.5 576 432 576z"/>
                             </svg>
-                            <span class="header__action-count">0</span>
+                            <span class="header__action-count">2</span>
                         </a>
                     </div>
                 </div>
@@ -740,137 +773,118 @@
         </div>
     </header>
 
-    <!-- HERO ROUPAS -->
-    <section class="hero-roupas">
-        <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Coleção de Roupas" class="hero-roupas__image">
+    <!-- HERO CARRINHO -->
+    <section class="hero-carrinho">
         <div class="container">
-            <div class="hero-roupas__content">
-                <h1 class="hero-roupas__title">COLEÇÃO ROUPAS</h1>
-                <p class="hero-roupas__subtitle">Peças essenciais para um guarda-roupa atemporal</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- CATEGORIAS -->
-    <section class="categorias section">
-        <div class="container">
-            <h2 class="categorias__title">Explore por Categoria</h2>
-            <div class="categorias__grid">
-                <div class="categoria-card">
-                    <img src="https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Camisetas" class="categoria-card__image">
-                    <div class="categoria-card__content">
-                        <h3 class="categoria-card__title">Camisetas</h3>
-                    </div>
-                </div>
-                <div class="categoria-card">
-                    <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=736&q=80" alt="Calças" class="categoria-card__image">
-                    <div class="categoria-card__content">
-                        <h3 class="categoria-card__title">Calças</h3>
-                    </div>
-                </div>
-                <div class="categoria-card">
-                    <img src="https://images.unsplash.com/photo-1539533018447-63fcce2678e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Casacos" class="categoria-card__image">
-                    <div class="categoria-card__content">
-                        <h3 class="categoria-card__title">Casacos</h3>
-                    </div>
-                </div>
-                <div class="categoria-card">
-                    <img src="https://images.unsplash.com/photo-1595341595379-cf1cd0fb7fb3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Acessórios" class="categoria-card__image">
-                    <div class="categoria-card__content">
-                        <h3 class="categoria-card__title">Acessórios</h3>
-                    </div>
+            <div class="hero-carrinho__content">
+                <h1 class="hero-carrinho__title">SEU CARRINHO</h1>
+                <div class="hero-carrinho__breadcrumb">
+                    <a href="/">Home</a>
+                    <span>/</span>
+                    <a href="Roupas.html">Roupas</a>
+                    <span>/</span>
+                    <span>Carrinho</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- PRODUTOS -->
-    <section class="produtos section">
+    <!-- CARRINHO -->
+    <section class="carrinho section">
         <div class="container">
-            <div class="produtos__header">
-                <h2 class="produtos__title">Todos os Produtos</h2>
-                <div class="produtos__filters">
-                    <div class="produtos__filter active">Todos</div>
-                    <div class="produtos__filter">Novidades</div>
-                    <div class="produtos__filter">Mais Vendidos</div>
-                    <div class="produtos__filter">Coleção Outono/Inverno</div>
+            <!-- Versão com itens no carrinho -->
+            <div class="carrinho__content">
+                <h2 class="carrinho__title">Seus Produtos</h2>
+                
+                <div class="carrinho__items">
+                    <!-- Item 1 -->
+                    <div class="carrinho-item">
+                        <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=725&q=80" alt="Camiseta Essential" class="carrinho-item__image">
+                        
+                        <div class="carrinho-item__details">
+                            <h3 class="carrinho-item__title">Camiseta Essential</h3>
+                            <p class="carrinho-item__variant">Tamanho: M | Cor: Preto</p>
+                            <button class="carrinho-item__remove">Remover</button>
+                        </div>
+                        
+                        <div class="carrinho-item__price">
+                            <span class="carrinho-item__current-price">R$ 149,90</span>
+                            
+                            <div class="carrinho-item__quantity">
+                                <button class="carrinho-item__quantity-btn">-</button>
+                                <input type="number" value="1" min="1" class="carrinho-item__quantity-input">
+                                <button class="carrinho-item__quantity-btn">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 2 -->
+                    <div class="carrinho-item">
+                        <img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Calça Slim Fit" class="carrinho-item__image">
+                        
+                        <div class="carrinho-item__details">
+                            <h3 class="carrinho-item__title">Calça Slim Fit</h3>
+                            <p class="carrinho-item__variant">Tamanho: 42 | Cor: Azul Marinho</p>
+                            <button class="carrinho-item__remove">Remover</button>
+                        </div>
+                        
+                        <div class="carrinho-item__price">
+                            <span class="carrinho-item__current-price">R$ 299,90</span>
+                            
+                            <div class="carrinho-item__quantity">
+                                <button class="carrinho-item__quantity-btn">-</button>
+                                <input type="number" value="1" min="1" class="carrinho-item__quantity-input">
+                                <button class="carrinho-item__quantity-btn">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="carrinho__actions">
+                    <a href="Roupas.html" class="carrinho__continue">
+                        <i class="fas fa-arrow-left"></i>
+                        Continuar Comprando
+                    </a>
+                    
+                    <button class="carrinho__update">Atualizar Carrinho</button>
+                </div>
+                
+                <div class="carrinho__container">
+                    <div></div> <!-- Espaço vazio para alinhamento -->
+                    
+                    <div class="resumo">
+                        <h3 class="resumo__title">Resumo do Pedido</h3>
+                        
+                        <div class="resumo__row">
+                            <span>Subtotal</span>
+                            <span>R$ 449,80</span>
+                        </div>
+                        
+                        <div class="resumo__row">
+                            <span>Frete</span>
+                            <span>Grátis</span>
+                        </div>
+                        
+                        <div class="resumo__row resumo__row--total">
+                            <span>Total</span>
+                            <span>R$ 449,80</span>
+                        </div>
+                        
+                        <button class="resumo__checkout">Finalizar Compra</button>
+                        
+                        <p class="resumo__note">Taxas e impostos são calculados no checkout</p>
+                    </div>
                 </div>
             </div>
-            <div class="produtos__grid">
-                <!-- Produto 1 -->
-                <div class="produto-card">
-                    <div class="produto-card__image-container">
-                        <span class="produto-card__badge">Novidade</span>
-                        <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=725&q=80" alt="Camiseta Essential" class="produto-card__image">
-                        <button class="produto-card__quickview">Visualização Rápida</button>
-                    </div>
-                    <div class="produto-card__content">
-                        <h3 class="produto-card__title">Camiseta Essential</h3>
-                        <p class="produto-card__price">R$ 149,90</p>
-                    </div>
-                </div>
 
-                <!-- Produto 2 -->
-                <div class="produto-card">
-                    <div class="produto-card__image-container">
-                        <span class="produto-card__badge">Mais Vendido</span>
-                        <img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Calça Slim Fit" class="produto-card__image">
-                        <button class="produto-card__quickview">Visualização Rápida</button>
-                    </div>
-                    <div class="produto-card__content">
-                        <h3 class="produto-card__title">Calça Slim Fit</h3>
-                        <p class="produto-card__price">R$ 299,90</p>
-                    </div>
+            <!-- Versão carrinho vazio (oculta por padrão) -->
+            <div class="carrinho-vazio">
+                <div class="carrinho-vazio__icon">
+                    <i class="fas fa-shopping-bag"></i>
                 </div>
-
-                <!-- Produto 3 -->
-                <div class="produto-card">
-                    <div class="produto-card__image-container">
-                        <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=736&q=80" alt="Jaqueta Minimal" class="produto-card__image">
-                        <button class="produto-card__quickview">Visualização Rápida</button>
-                    </div>
-                    <div class="produto-card__content">
-                        <h3 class="produto-card__title">Jaqueta Minimal</h3>
-                        <p class="produto-card__price">R$ 399,90</p>
-                    </div>
-                </div>
-
-                <!-- Produto 4 -->
-                <div class="produto-card">
-                    <div class="produto-card__image-container">
-                        <img src="https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Camiseta Básica" class="produto-card__image">
-                        <button class="produto-card__quickview">Visualização Rápida</button>
-                    </div>
-                    <div class="produto-card__content">
-                        <h3 class="produto-card__title">Camiseta Básica</h3>
-                        <p class="produto-card__price">R$ 129,90</p>
-                    </div>
-                </div>
-
-                <!-- Produto 5 -->
-                <div class="produto-card">
-                    <div class="produto-card__image-container">
-                        <span class="produto-card__badge">Novidade</span>
-                        <img src="https://images.unsplash.com/photo-1539533018447-63fcce2678e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Blazer Premium" class="produto-card__image">
-                        <button class="produto-card__quickview">Visualização Rápida</button>
-                    </div>
-                    <div class="produto-card__content">
-                        <h3 class="produto-card__title">Blazer Premium</h3>
-                        <p class="produto-card__price">R$ 599,90</p>
-                    </div>
-                </div>
-
-                <!-- Produto 6 -->
-                <div class="produto-card">
-                    <div class="produto-card__image-container">
-                        <img src="https://images.unsplash.com/photo-1595341595379-cf1cd0fb7fb3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Cinto de Couro" class="produto-card__image">
-                        <button class="produto-card__quickview">Visualização Rápida</button>
-                    </div>
-                    <div class="produto-card__content">
-                        <h3 class="produto-card__title">Cinto de Couro</h3>
-                        <p class="produto-card__price">R$ 199,90</p>
-                    </div>
-                </div>
+                <h2 class="carrinho-vazio__title">Seu carrinho está vazio</h2>
+                <p class="carrinho-vazio__text">Explore nossas coleções e adicione produtos que combinam com seu estilo.</p>
+                <a href="Roupas.html" class="carrinho-vazio__btn">Continuar Comprando</a>
             </div>
         </div>
     </section>
@@ -886,10 +900,10 @@
                 <div class="footer__col">
                     <h4 class="footer__title">Loja</h4>
                     <ul class="footer__links">
-                        <li class="footer__link"><a href="Novidades.html">Novidades</a></li>
-                        <li class="footer__link"><a href='Roupas.html'>Roupas</a></li>
+                        <li class="footer__link"><a href="#">Novidades</a></li>
+                        <li class="footer__link"><a href="Roupas.html">Roupas</a></li>
                         <li class="footer__link"><a href="Calçados.html">Calçados</a></li>
-                        <li class="footer__link"><a href='SkinCare.html'>Skincare</a></li>
+                        <li class="footer__link"><a href="SkinCare.html">Skincare</a></li>
                     </ul>
                 </div>
                 <div class="footer__col">
@@ -970,36 +984,68 @@
             }
         });
 
-        // Filtros de produtos
-        document.querySelectorAll('.produtos__filter').forEach(filter => {
-            filter.addEventListener('click', function() {
-                document.querySelectorAll('.produtos__filter').forEach(f => {
-                    f.classList.remove('active');
-                });
-                this.classList.add('active');
+        // Quantidade de produtos
+        document.querySelectorAll('.carrinho-item__quantity-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const input = this.parentElement.querySelector('.carrinho-item__quantity-input');
+                let value = parseInt(input.value);
+                
+                if (this.textContent === '+' && value < 10) {
+                    input.value = value + 1;
+                } else if (this.textContent === '-' && value > 1) {
+                    input.value = value - 1;
+                }
+                
+                // Atualizar o preço total (simulação)
+                updateTotalPrice();
             });
         });
 
-        // Adicionar ao carrinho
-        document.querySelectorAll('.produto-card__quickview').forEach(button => {
-            button.addEventListener('click', function(e) {
-                e.preventDefault();
-                const countElement = document.querySelector('.header__action-count');
-                let count = parseInt(countElement.textContent) || 0;
-                countElement.textContent = count + 1;
-                
-                const button = this;
-                const originalText = button.textContent;
-                button.textContent = 'Adicionado!';
-                button.style.backgroundColor = '#4CAF50';
-                
+        // Remover item
+        document.querySelectorAll('.carrinho-item__remove').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const item = this.closest('.carrinho-item');
+                item.style.opacity = '0';
+                item.style.transform = 'translateX(-20px)';
                 setTimeout(() => {
-                    button.textContent = originalText;
-                    button.style.backgroundColor = '';
-                }, 2000);
+                    item.remove();
+                    checkEmptyCart();
+                    updateTotalPrice();
+                }, 300);
             });
         });
-        
+
+        // Atualizar preço total
+        function updateTotalPrice() {
+            // Simulação de atualização de preço
+            // Em uma implementação real, você calcularia baseado nos itens
+            console.log('Preço atualizado');
+        }
+
+        // Verificar se o carrinho está vazio
+        function checkEmptyCart() {
+            const items = document.querySelectorAll('.carrinho-item');
+            const cartContent = document.querySelector('.carrinho__content');
+            const emptyCart = document.querySelector('.carrinho-vazio');
+            
+            if (items.length === 0) {
+                cartContent.style.display = 'none';
+                emptyCart.style.display = 'block';
+            }
+        }
+
+        // Atualizar carrinho
+        document.querySelector('.carrinho__update').addEventListener('click', function() {
+            // Simulação de atualização do carrinho
+            alert('Carrinho atualizado!');
+        });
+
+        // Finalizar compra
+        document.querySelector('.resumo__checkout').addEventListener('click', function() {
+            // Simulação de finalização de compra
+            alert('Redirecionando para o checkout...');
+        });
+
         // Melhorar a experiência de toque em dispositivos móveis
         document.addEventListener('touchstart', function() {}, {passive: true});
 
