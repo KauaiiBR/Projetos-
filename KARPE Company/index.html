@@ -137,11 +137,20 @@
             margin-left: 20px;
             font-size: 1.6rem;
             cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .header__action:hover {
+            transform: scale(1.1);
         }
 
         .header__action a {
             color: var(--black);
             text-decoration: none;
+        }
+
+        .fa-user-check {
+            color: #10B981 !important;
         }
 
         /* Menu Hamburger (Mobile) */
@@ -981,17 +990,23 @@
                             <a href="#" class="header__nav-link">Novidades</a>
                         </li>
                         <li class="header__nav-item">
-                            <a class='header__nav-link' href='/roupas'>Roupas</a>
+                            <a class='header__nav-link' href='Roupas.html'>Roupas</a>
                         </li>
                         <li class="header__nav-item">
-                            <a href="#" class="header__nav-link">Calçados</a>
+                            <a href="Calçados.html" class="header__nav-link">Calçados</a>
                         </li>
                         <li class="header__nav-item">
-                            <a href="#" class="header__nav-link">Skincare</a>
+                            <a href="SkinCare.html" class="header__nav-link">Skincare</a>
                         </li>
                     </ul>
                 </nav>
                 <div class="header__actions">
+                    <!-- Ícone de Login -->
+                    <div class="header__action">
+                        <a href="LoginUsuariosKARP.html" aria-label="Login" id="loginIcon">
+                            <i class="fas fa-user"></i>
+                        </a>
+                    </div>
                     <div class="header__action mobile-hidden">
                         <i class="fas fa-search"></i>
                     </div>
@@ -1032,17 +1047,17 @@
             </div>
             <div class="collections__grid">
                 <div class="collection-card">
-                    <img src="https://via.placeholder.com/800x1000" alt="Coleção 1" class="collection-card__image">
+                    <img src="https://i.pinimg.com/736x/2c/f3/45/2cf345c33502c764d0a39389f18fce93.jpg" alt="Coleção 1" class="collection-card__image">
                     <div class="collection-card__content">
                         <h3 class="collection-card__title">Essenciais</h3>
-                        <a href="#" class="collection-card__link">
+                        <a href="https://i.pinimg.com/1200x/86/99/c9/8699c99ed7af8ff818cd2c266f2b7301.jpg" class="collection-card__link">
                             Explorar
                             <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
                 </div>
                 <div class="collection-card">
-                    <img src="https://via.placeholder.com/800x1000" alt="Coleção 2" class="collection-card__image">
+                    <img src="https://i.pinimg.com/1200x/86/99/c9/8699c99ed7af8ff818cd2c266f2b7301.jpg" alt="Coleção 2" class="collection-card__image">
                     <div class="collection-card__content">
                         <h3 class="collection-card__title">Urban</h3>
                         <a href="#" class="collection-card__link">
@@ -1052,7 +1067,7 @@
                     </div>
                 </div>
                 <div class="collection-card">
-                    <img src="https://via.placeholder.com/800x1000" alt="Coleção 3" class="collection-card__image">
+                    <img src="https://i.pinimg.com/736x/da/15/75/da15752d7e9dacb61fc6ea524fe8a483.jpg" alt="Coleção 3" class="collection-card__image">
                     <div class="collection-card__content">
                         <h3 class="collection-card__title">Minimal</h3>
                         <a href="#" class="collection-card__link">
@@ -1150,6 +1165,130 @@
 
     <!-- MAIN JS -->
     <script>
+        // Sistema de Verificação de Login
+        function verificarLogin() {
+            const token = localStorage.getItem('karpe_token');
+            const user = localStorage.getItem('karpe_user');
+            const loginIcon = document.getElementById('loginIcon');
+            
+            if (loginIcon) {
+                if (token && user) {
+                    // Usuário está logado
+                    try {
+                        const userData = JSON.parse(user);
+                        loginIcon.innerHTML = `<i class="fas fa-user-check" style="color: #10B981;"></i>`;
+                        loginIcon.title = `Logado como: ${userData.nome}`;
+                        loginIcon.href = '#'; // Ou link para perfil
+                        
+                        // Adicionar menu dropdown para logout
+                        loginIcon.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            mostrarMenuUsuario(userData);
+                        });
+                    } catch (error) {
+                        console.error('Erro ao processar dados do usuário:', error);
+                        // Se der erro, volta para estado não logado
+                        localStorage.removeItem('karpe_token');
+                        localStorage.removeItem('karpe_user');
+                    }
+                } else {
+                    // Usuário não está logado
+                    loginIcon.innerHTML = `<i class="fas fa-user"></i>`;
+                    loginIcon.title = 'Fazer Login';
+                    loginIcon.href = 'LoginUsuariosKARP.html';
+                }
+            }
+        }
+
+        // Menu dropdown do usuário
+        function mostrarMenuUsuario(userData) {
+            // Remove menu anterior se existir
+            const menuAnterior = document.getElementById('userDropdownMenu');
+            if (menuAnterior) {
+                menuAnterior.remove();
+            }
+            
+            const menu = document.createElement('div');
+            menu.id = 'userDropdownMenu';
+            menu.style.cssText = `
+                position: absolute;
+                top: 60px;
+                right: 20px;
+                background: white;
+                border: 1px solid #e5e7eb;
+                border-radius: 8px;
+                padding: 15px;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+                z-index: 10000;
+                min-width: 200px;
+                font-family: inherit;
+            `;
+            
+            menu.innerHTML = `
+                <div style="margin-bottom: 10px; font-weight: 600; color: #000;">${userData.nome}</div>
+                <div style="margin-bottom: 15px; color: #666; font-size: 0.9rem;">${userData.email}</div>
+                <hr style="margin: 10px 0; border: none; border-top: 1px solid #e5e7eb;">
+                <button onclick="sair()" style="background: #ef4444; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; width: 100%; font-size: 0.9rem;">
+                    <i class="fas fa-sign-out-alt" style="margin-right: 5px;"></i>Sair
+                </button>
+            `;
+            
+            document.body.appendChild(menu);
+            
+            // Fechar menu ao clicar fora
+            setTimeout(() => {
+                document.addEventListener('click', function fecharMenu(e) {
+                    if (!menu.contains(e.target) && e.target.id !== 'loginIcon') {
+                        menu.remove();
+                        document.removeEventListener('click', fecharMenu);
+                    }
+                });
+            }, 100);
+        }
+
+        // Função de logout
+        function sair() {
+            localStorage.removeItem('karpe_token');
+            localStorage.removeItem('karpe_user');
+            
+            // Feedback visual
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 80px;
+                right: 15px;
+                background: #10B981;
+                color: white;
+                padding: 15px 20px;
+                border-radius: 8px;
+                font-size: 1.4rem;
+                z-index: 10000;
+                transform: translateY(-100px);
+                transition: transform 0.3s ease;
+                text-align: center;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            `;
+            notification.textContent = '✅ Logout realizado com sucesso!';
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.transform = 'translateY(0)';
+            }, 100);
+            
+            setTimeout(() => {
+                notification.style.transform = 'translateY(-100px)';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                    location.reload();
+                }, 300);
+            }, 2000);
+        }
+
+        // Verificar status do usuário ao carregar a página
+        document.addEventListener('DOMContentLoaded', function() {
+            verificarLogin();
+        });
+
         // Menu hamburger toggle
         const hamburger = document.getElementById('hamburger');
         const nav = document.getElementById('nav');
