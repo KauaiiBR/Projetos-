@@ -26,6 +26,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
 
         html {
@@ -40,6 +41,7 @@
             line-height: 1.6;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
+            -webkit-text-size-adjust: 100%;
         }
 
         .container {
@@ -64,6 +66,7 @@
             transition: var(--transition);
             border-bottom: 1px solid var(--gray-3);
             background-color: var(--white);
+            backdrop-filter: blur(10px);
         }
 
         .header__inner {
@@ -78,6 +81,41 @@
             letter-spacing: 0.2em;
             text-transform: uppercase;
             z-index: 1001;
+        }
+
+        /* Menu Hamburger (Mobile) */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: var(--black);
+            border-radius: 3px;
+            transition: var(--transition);
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
         }
 
         .header__nav {
@@ -129,17 +167,24 @@
             font-size: 1.6rem;
             cursor: pointer;
             position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .header__action:hover {
+            transform: scale(1.1);
         }
 
         .header__action a {
             color: var(--black);
             text-decoration: none;
+            display: flex;
+            align-items: center;
         }
 
         .header__action svg {
             width: 24px;
             height: 24px;
-            fill: black;
+            fill: var(--black);
         }
 
         .header__action-count {
@@ -155,29 +200,11 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            font-weight: 600;
         }
 
-        /* Menu Hamburger (Mobile) */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 30px;
-            height: 21px;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            padding: 0;
-            z-index: 1001;
-        }
-
-        .hamburger span {
-            display: block;
-            height: 3px;
-            width: 100%;
-            background-color: var(--black);
-            border-radius: 3px;
-            transition: var(--transition);
+        .fa-user-check {
+            color: #10B981 !important;
         }
 
         /* HERO NOVIDADES */
@@ -375,6 +402,112 @@
             transform: translateX(5px);
         }
 
+        /* PRODUTOS NOVIDADES */
+        .produtos-novidades {
+            padding: var(--spacing) 0;
+            background-color: var(--gray-1);
+        }
+
+        .produtos-novidades__header {
+            text-align: center;
+            margin-bottom: 6rem;
+        }
+
+        .produtos-novidades__title {
+            font-size: 3.6rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+        }
+
+        .produtos-novidades__grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .produto-card {
+            position: relative;
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+
+        .produto-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .produto-card__badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--black);
+            color: var(--white);
+            padding: 5px 10px;
+            font-size: 1.2rem;
+            letter-spacing: 0.1em;
+            z-index: 2;
+            border-radius: 3px;
+        }
+
+        .produto-card__image-container {
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 20px;
+            height: 400px;
+        }
+
+        .produto-card__image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .produto-card:hover .produto-card__image {
+            transform: scale(1.03);
+        }
+
+        .produto-card__quickview {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px;
+            background-color: var(--black);
+            color: var(--white);
+            text-align: center;
+            font-size: 1.4rem;
+            letter-spacing: 0.1em;
+            transform: translateY(100%);
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            font-weight: 500;
+        }
+
+        .produto-card:hover .produto-card__quickview {
+            transform: translateY(0);
+        }
+
+        .produto-card__content {
+            padding: 0 20px 20px;
+        }
+
+        .produto-card__title {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .produto-card__price {
+            font-size: 1.6rem;
+            color: var(--gray-5);
+            font-weight: 500;
+        }
+
         /* NEWSLETTER */
         .newsletter {
             padding: var(--spacing) 0;
@@ -505,7 +638,8 @@
 
         /* RESPONSIVE STYLES */
         @media (max-width: 1200px) {
-            .destaques__grid {
+            .destaques__grid,
+            .produtos-novidades__grid {
                 grid-template-columns: repeat(2, 1fr);
             }
             
@@ -610,12 +744,14 @@
                 display: none;
             }
             
-            .destaques__grid {
+            .destaques__grid,
+            .produtos-novidades__grid {
                 grid-template-columns: 1fr;
                 gap: 30px;
             }
             
-            .destaque-card__image-container {
+            .destaque-card__image-container,
+            .produto-card__image-container {
                 height: 300px;
             }
         }
@@ -637,11 +773,13 @@
                 font-size: 1.4rem;
             }
             
-            .destaques__title {
+            .destaques__title,
+            .produtos-novidades__title {
                 font-size: 2.8rem;
             }
             
-            .destaque-card__image-container {
+            .destaque-card__image-container,
+            .produto-card__image-container {
                 height: 250px;
             }
             
@@ -680,11 +818,13 @@
                 font-size: 3rem;
             }
             
-            .destaque-card__content {
+            .destaque-card__content,
+            .produto-card__content {
                 padding: 0 15px 15px;
             }
             
-            .destaque-card__title {
+            .destaque-card__title,
+            .produto-card__title {
                 font-size: 1.6rem;
             }
         }
@@ -702,12 +842,14 @@
 
         /* Melhorias para toque em dispositivos móveis */
         @media (hover: none) and (pointer: coarse) {
-            .destaque-card:hover {
+            .destaque-card:hover,
+            .produto-card:hover {
                 transform: none;
                 box-shadow: 0 4px 12px rgba(0,0,0,0.05);
             }
             
-            .destaque-card:hover .destaque-card__image {
+            .destaque-card:hover .destaque-card__image,
+            .produto-card:hover .produto-card__image {
                 transform: none;
             }
             
@@ -737,6 +879,25 @@
             outline: 2px solid var(--black);
             outline-offset: 2px;
         }
+
+        /* Loading states */
+        .loading {
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        /* UTILITIES */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
     </style>
 </head>
 <body>
@@ -752,10 +913,10 @@
                     <span></span>
                 </button>
                 
-                <nav class="header__nav" id="nav">
+                <nav class="header__nav" id="nav" aria-label="Navegação principal">
                     <ul class="header__nav-list">
                         <li class="header__nav-item">
-                            <a href="/" class="header__nav-link">Novidades</a>
+                            <a href="Novidades.html" class="header__nav-link">Novidades</a>
                         </li>
                         <li class="header__nav-item">
                             <a href="Roupas.html" class="header__nav-link">Roupas</a>
@@ -768,13 +929,19 @@
                         </li>
                     </ul>
                 </nav>
+                
                 <div class="header__actions">
-                    <div class="header__action mobile-hidden">
-                        <i class="fas fa-search"></i>
-                    </div>
+                    <!-- Ícone de Login -->
                     <div class="header__action">
-                        <a href="carrinho.html">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                        <a href="LoginUsuariosKARP.html" aria-label="Login" id="loginIcon">
+                            <i class="fas fa-user"></i>
+                        </a>
+                    </div>
+                    
+                    <!-- Ícone do Carrinho -->
+                    <div class="header__action">
+                        <a href="carrinho.html" aria-label="Carrinho de compras">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="24" height="24">
                                 <path d="M24 48C10.7 48 0 58.7 0 72C0 85.3 10.7 96 24 96L69.3 96C73.2 96 76.5 98.8 77.2 102.6L129.3 388.9C135.5 423.1 165.3 448 200.1 448L456 448C469.3 448 480 437.3 480 424C480 410.7 469.3 400 456 400L200.1 400C188.5 400 178.6 391.7 176.5 380.3L171.4 352L475 352C505.8 352 532.2 330.1 537.9 299.8L568.9 133.9C572.6 114.2 557.5 96 537.4 96L124.7 96L124.3 94C119.5 67.4 96.3 48 69.2 48L24 48zM208 576C234.5 576 256 554.5 256 528C256 501.5 234.5 480 208 480C181.5 480 160 501.5 160 528C160 554.5 181.5 576 208 576zM432 576C458.5 576 480 554.5 480 528C480 501.5 458.5 480 432 480C405.5 480 384 501.5 384 528C384 554.5 405.5 576 432 576z"/>
                             </svg>
                             <span class="header__action-count">0</span>
@@ -813,7 +980,7 @@
                 <div class="destaque-card">
                     <div class="destaque-card__image-container">
                         <span class="destaque-card__badge">Novo</span>
-                        <img src="https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Coleção Outono/Inverno 2025" class="destaque-card__image">
+                        <img src="https://i.pinimg.com/736x/62/05/fe/6205fe8f34cd3d615d28138ea82b2f00.jpg" alt="Coleção Outono/Inverno 2025" class="destaque-card__image">
                     </div>
                     <div class="destaque-card__content">
                         <p class="destaque-card__date">15 JUL 2025</p>
@@ -826,7 +993,7 @@
                 <!-- Destaque 2 -->
                 <div class="destaque-card">
                     <div class="destaque-card__image-container">
-                        <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Guia de Estilo Urbano" class="destaque-card__image">
+                        <img src="https://i.pinimg.com/736x/ab/96/88/ab968883bb1863252e175a97c739cb6f.jpg" alt="Guia de Estilo Urbano" class="destaque-card__image">
                     </div>
                     <div class="destaque-card__content">
                         <p class="destaque-card__date">10 JUL 2025</p>
@@ -867,7 +1034,7 @@
                 <div class="destaque-card">
                     <div class="destaque-card__image-container">
                         <span class="destaque-card__badge">Dica</span>
-                        <img src="https://images.unsplash.com/photo-1539533018447-63fcce2678e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Como Cuidar das Suas Peças" class="destaque-card__image">
+                        <img src="https://i.pinimg.com/1200x/4e/d8/e5/4ed8e5fab63cede8b4ba76600c44c9fc.jpg" alt="" class="destaque-card__image">
                     </div>
                     <div class="destaque-card__content">
                         <p class="destaque-card__date">20 JUN 2025</p>
@@ -880,13 +1047,64 @@
                 <!-- Destaque 6 -->
                 <div class="destaque-card">
                     <div class="destaque-card__image-container">
-                        <img src="https://images.unsplash.com/photo-1595341595379-cf1cd0fb7fb3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Evento de Lançamento" class="destaque-card__image">
+                        <img src="https://i.pinimg.com/1200x/af/a5/2f/afa52f4ce1f97f99a5875699adf56827.jpg" alt="Evento de Lançamento" class="destaque-card__image">
                     </div>
                     <div class="destaque-card__content">
                         <p class="destaque-card__date">15 JUN 2025</p>
                         <h3 class="destaque-card__title">Evento de Lançamento</h3>
                         <p class="destaque-card__excerpt">Participe do nosso evento exclusivo de lançamento da nova coleção com descontos especiais.</p>
                         <a href="#" class="destaque-card__link">Ver mais <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUTOS NOVIDADES -->
+    <section class="produtos-novidades section">
+        <div class="container">
+            <div class="produtos-novidades__header">
+                <h2 class="produtos-novidades__title">Produtos em Destaque</h2>
+            </div>
+            <div class="produtos-novidades__grid">
+                <!-- Produto 1 -->
+                <div class="produto-card">
+                    <div class="produto-card__image-container">
+                        <span class="produto-card__badge">Novo</span>
+                        <img src="https://i.pinimg.com/1200x/4e/d8/e5/4ed8e5fab63cede8b4ba76600c44c9fc.jpg" alt="Camiseta Premium" class="produto-card__image">
+                        <button class="produto-card__quickview" data-product="1">Visualização Rápida</button>
+                    </div>
+                    <div class="produto-card__content">
+                        <h3 class="produto-card__title">Camiseta Premium</h3>
+                        <p class="produto-card__price">R$ 89,90</p>
+                        <button class="produto-card__quickview mobile-visible" data-product="1" style="margin-top: 10px; width: 100%; padding: 10px; background: var(--black); color: var(--white); border: none; border-radius: 4px; cursor: pointer;">Adicionar ao Carrinho</button>
+                    </div>
+                </div>
+
+                <!-- Produto 2 -->
+                <div class="produto-card">
+                    <div class="produto-card__image-container">
+                        <img src="https://i.pinimg.com/1200x/e8/1c/f9/e81cf9e5ee0ca87bba96766be001ea94.jpg" alt="Calça Jeans Slim" class="produto-card__image">
+                        <button class="produto-card__quickview" data-product="2">Visualização Rápida</button>
+                    </div>
+                    <div class="produto-card__content">
+                        <h3 class="produto-card__title">Calça Jeans Slim</h3>
+                        <p class="produto-card__price">R$ 159,90</p>
+                        <button class="produto-card__quickview mobile-visible" data-product="2" style="margin-top: 10px; width: 100%; padding: 10px; background: var(--black); color: var(--white); border: none; border-radius: 4px; cursor: pointer;">Adicionar ao Carrinho</button>
+                    </div>
+                </div>
+
+                <!-- Produto 3 -->
+                <div class="produto-card">
+                    <div class="produto-card__image-container">
+                        <span class="produto-card__badge">Lançamento</span>
+                        <img src="https://i.pinimg.com/736x/80/33/a4/8033a49a1af88a4e4b3e22abd2795173.jpg" alt="Tênis Urban" class="produto-card__image">
+                        <button class="produto-card__quickview" data-product="3">Visualização Rápida</button>
+                    </div>
+                    <div class="produto-card__content">
+                        <h3 class="produto-card__title">Tênis Urban</h3>
+                        <p class="produto-card__price">R$ 229,90</p>
+                        <button class="produto-card__quickview mobile-visible" data-product="3" style="margin-top: 10px; width: 100%; padding: 10px; background: var(--black); color: var(--white); border: none; border-radius: 4px; cursor: pointer;">Adicionar ao Carrinho</button>
                     </div>
                 </div>
             </div>
@@ -947,7 +1165,7 @@
             <div class="footer__bottom">
                 <p class="footer__copyright">© 2025 KARPE. Todos os direitos reservados.</p>
                 <div class="footer__social">
-                    <a href="#" class="footer__social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.instagram.com/karp_company?igsh=NjRvb2NjcHNmbWNx" class="footer__social-link"><i class="fab fa-instagram"></i></a>
                     <a href="#" class="footer__social-link"><i class="fab fa-facebook-f"></i></a>
                     <a href="#" class="footer__social-link"><i class="fab fa-twitter"></i></a>
                     <a href="#" class="footer__social-link"><i class="fab fa-pinterest"></i></a>
@@ -958,6 +1176,137 @@
 
     <!-- MAIN JS -->
     <script>
+        // Sistema de Carrinho
+        class ShoppingCart {
+            constructor() {
+                this.items = JSON.parse(localStorage.getItem('cart')) || [];
+                this.updateCartCount();
+                this.checkLoginStatus();
+            }
+
+            addItem(product) {
+                const existingItem = this.items.find(item => item.id === product.id);
+                
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    this.items.push({
+                        ...product,
+                        quantity: 1
+                    });
+                }
+                
+                this.saveCart();
+                this.updateCartCount();
+                this.showAddToCartMessage(product.name);
+            }
+
+            removeItem(productId) {
+                this.items = this.items.filter(item => item.id !== productId);
+                this.saveCart();
+                this.updateCartCount();
+            }
+
+            updateQuantity(productId, quantity) {
+                const item = this.items.find(item => item.id === productId);
+                if (item) {
+                    item.quantity = quantity;
+                    if (item.quantity <= 0) {
+                        this.removeItem(productId);
+                    } else {
+                        this.saveCart();
+                        this.updateCartCount();
+                    }
+                }
+            }
+
+            getTotalItems() {
+                return this.items.reduce((total, item) => total + item.quantity, 0);
+            }
+
+            getTotalPrice() {
+                return this.items.reduce((total, item) => total + (item.price * item.quantity), 0);
+            }
+
+            saveCart() {
+                localStorage.setItem('cart', JSON.stringify(this.items));
+            }
+
+            updateCartCount() {
+                const cartCount = document.querySelector('.header__action-count');
+                const totalItems = this.getTotalItems();
+                cartCount.textContent = totalItems;
+                
+                // Adicionar animação
+                if (totalItems > 0) {
+                    cartCount.style.transform = 'scale(1.2)';
+                    setTimeout(() => {
+                        cartCount.style.transform = 'scale(1)';
+                    }, 300);
+                }
+            }
+
+            showAddToCartMessage(productName) {
+                // Criar mensagem de feedback
+                const message = document.createElement('div');
+                message.style.cssText = `
+                    position: fixed;
+                    top: 100px;
+                    right: 20px;
+                    background: var(--black);
+                    color: var(--white);
+                    padding: 15px 20px;
+                    border-radius: 8px;
+                    font-size: 1.4rem;
+                    z-index: 10000;
+                    transform: translateX(400px);
+                    transition: transform 0.3s ease;
+                    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                `;
+                message.innerHTML = `
+                    <i class="fas fa-check-circle" style="margin-right: 8px;"></i>
+                    ${productName} adicionado ao carrinho!
+                `;
+                
+                document.body.appendChild(message);
+                
+                // Animação de entrada
+                setTimeout(() => {
+                    message.style.transform = 'translateX(0)';
+                }, 100);
+                
+                // Remover após 3 segundos
+                setTimeout(() => {
+                    message.style.transform = 'translateX(400px)';
+                    setTimeout(() => {
+                        if (message.parentNode) {
+                            message.parentNode.removeChild(message);
+                        }
+                    }, 300);
+                }, 3000);
+            }
+
+            checkLoginStatus() {
+                const isLoggedIn = localStorage.getItem('userLoggedIn') === 'true';
+                const loginIcon = document.getElementById('loginIcon');
+                
+                if (isLoggedIn) {
+                    loginIcon.innerHTML = '<i class="fas fa-user-check"></i>';
+                    loginIcon.style.color = '#10B981';
+                }
+            }
+        }
+
+        // Inicializar carrinho
+        const cart = new ShoppingCart();
+
+        // Produtos disponíveis
+        const products = {
+            1: { id: 1, name: 'Camiseta Premium', price: 89.90, image: 'https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80' },
+            2: { id: 2, name: 'Calça Jeans Slim', price: 159.90, image: 'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80' },
+            3: { id: 3, name: 'Tênis Urban', price: 229.90, image: 'https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80' }
+        };
+
         // Menu hamburger toggle
         const hamburger = document.getElementById('hamburger');
         const nav = document.getElementById('nav');
@@ -965,18 +1314,6 @@
         hamburger.addEventListener('click', function() {
             nav.classList.toggle('active');
             hamburger.classList.toggle('active');
-            
-            // Animação do hamburger para X
-            const spans = hamburger.querySelectorAll('span');
-            if(nav.classList.contains('active')) {
-                spans[0].style.transform = 'translateY(9px) rotate(45deg)';
-                spans[1].style.opacity = '0';
-                spans[2].style.transform = 'translateY(-9px) rotate(-45deg)';
-            } else {
-                spans[0].style.transform = 'none';
-                spans[1].style.opacity = '1';
-                spans[2].style.transform = 'none';
-            }
         });
         
         // Fechar menu ao clicar em um link
@@ -984,11 +1321,6 @@
             link.addEventListener('click', function() {
                 nav.classList.remove('active');
                 hamburger.classList.remove('active');
-                
-                const spans = hamburger.querySelectorAll('span');
-                spans[0].style.transform = 'none';
-                spans[1].style.opacity = '1';
-                spans[2].style.transform = 'none';
             });
         });
 
@@ -1014,7 +1346,7 @@
                 
                 // Simulação de filtro
                 const category = this.textContent.toLowerCase();
-                alert(`Filtrando por: ${category}`);
+                console.log(`Filtrando por: ${category}`);
             });
         });
 
@@ -1028,6 +1360,28 @@
             }
         });
 
+        // Adicionar funcionalidade aos cards de destaque
+        document.querySelectorAll('.destaque-card__link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const card = this.closest('.destaque-card');
+                const title = card.querySelector('.destaque-card__title').textContent;
+                console.log(`Abrindo: ${title}`);
+            });
+        });
+
+        // Adicionar produtos ao carrinho
+        document.querySelectorAll('.produto-card__quickview').forEach(button => {
+            button.addEventListener('click', function() {
+                const productId = this.getAttribute('data-product');
+                const product = products[productId];
+                
+                if (product) {
+                    cart.addItem(product);
+                }
+            });
+        });
+
         // Melhorar a experiência de toque em dispositivos móveis
         document.addEventListener('touchstart', function() {}, {passive: true});
 
@@ -1038,15 +1392,25 @@
             }
         }, { passive: false });
 
-        // Adicionar funcionalidade aos cards de destaque
-        document.querySelectorAll('.destaque-card__link').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const card = this.closest('.destaque-card');
-                const title = card.querySelector('.destaque-card__title').textContent;
-                alert(`Abrindo: ${title}`);
-            });
+        // Verificar status de login ao carregar a página
+        document.addEventListener('DOMContentLoaded', function() {
+            cart.checkLoginStatus();
         });
+
+        // Adicionar efeitos de hover melhorados para desktop
+        if (window.matchMedia('(hover: hover)').matches) {
+            document.querySelectorAll('.produto-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                    this.style.boxShadow = '0 10px 25px rgba(0,0,0,0.1)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                    this.style.boxShadow = '0 4px 12px rgba(0,0,0,0.05)';
+                });
+            });
+        }
     </script>
 </body>
 </html>

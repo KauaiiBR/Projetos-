@@ -359,29 +359,28 @@
             touch-action: manipulation;
         }
 
-        /* ✅ CORRIGIDO - código funcionando */
-        .carrinho-item_quantity-btn:active {
-        background-color: var(--gray-2);  /* ← Corrigido a propriedade */
-        transform: scale(0.95);           /* ← "scale" em vez de "scaled" */
+        .carrinho-item__quantity-btn:active {
+            background-color: var(--gray-2);
+            transform: scale(0.95);
         }
 
-        .carrinho-item_quantity-input {
-        width: 50px;
-        height: 35px;
-        text-align: center;
-        border: 1px solid var(--gray-2);  /* ← "1px" em vez de "ipx" */
-        border-radius: 4px;
-        font-size: 1.4rem;                /* ← "rem" em vez de "res" */
-        font-weight: 500;
-        -webkit-appearance: none;
-        -moz-appearance: textfield;       /* ← "-moz" em vez de "-max" */
-        appearance: none;                 /* ← Propriedade padrão adicionada */
+        .carrinho-item__quantity-input {
+            width: 50px;
+            height: 35px;
+            text-align: center;
+            border: 1px solid var(--gray-2);
+            border-radius: 4px;
+            font-size: 1.4rem;
+            font-weight: 500;
+            -webkit-appearance: none;
+            -moz-appearance: textfield;
+            appearance: none;
         }
 
-        .carrinho-item_quantity-input::-webkit-outer-spin-button,
-        .carrinho-item_quantity-input::-webkit-inner-spin-button {
-        -webkit-appearance: none;         /* ← Sintaxe correta */
-        margin: 0;
+        .carrinho-item__quantity-input::-webkit-outer-spin-button,
+        .carrinho-item__quantity-input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
         }
 
         .carrinho__actions {
@@ -820,7 +819,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
                                 <path d="M24 48C10.7 48 0 58.7 0 72C0 85.3 10.7 96 24 96L69.3 96C73.2 96 76.5 98.8 77.2 102.6L129.3 388.9C135.5 423.1 165.3 448 200.1 448L456 448C469.3 448 480 437.3 480 424C480 410.7 469.3 400 456 400L200.1 400C188.5 400 178.6 391.7 176.5 380.3L171.4 352L475 352C505.8 352 532.2 330.1 537.9 299.8L568.9 133.9C572.6 114.2 557.5 96 537.4 96L124.7 96L124.3 94C119.5 67.4 96.3 48 69.2 48L24 48zM208 576C234.5 576 256 554.5 256 528C256 501.5 234.5 480 208 480C181.5 480 160 501.5 160 528C160 554.5 181.5 576 208 576zM432 576C458.5 576 480 554.5 480 528C480 501.5 458.5 480 432 480C405.5 480 384 501.5 384 528C384 554.5 405.5 576 432 576z"/>
                             </svg>
-                            <span class="header__action-count">2</span>
+                            <span class="header__action-count">0</span>
                         </a>
                     </div>
                 </div>
@@ -851,68 +850,8 @@
             <div class="carrinho__content">
                 <h2 class="carrinho__title">Seus Produtos</h2>
                 
-                <div class="carrinho__items">
-                    <!-- Item 1 -->
-                    <div class="carrinho-item">
-                        <div class="carrinho-item__image-container">
-                            <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=725&q=80" 
-                                 alt="Camiseta Essential" 
-                                 class="carrinho-item__image"
-                                 loading="lazy">
-                        </div>
-                        
-                        <div class="carrinho-item__details">
-                            <h3 class="carrinho-item__title">Camiseta Essential</h3>
-                            <p class="carrinho-item__variant">Tamanho: M | Cor: Preto</p>
-                            <button class="carrinho-item__remove">Remover</button>
-                        </div>
-                        
-                        <div class="carrinho-item__price">
-                            <span class="carrinho-item__current-price">R$ 149,90</span>
-                            
-                            <div class="carrinho-item__quantity">
-                                <button class="carrinho-item__quantity-btn" aria-label="Diminuir quantidade">-</button>
-                                <input type="number" 
-                                       value="1" 
-                                       min="1" 
-                                       max="10"
-                                       class="carrinho-item__quantity-input"
-                                       aria-label="Quantidade do produto">
-                                <button class="carrinho-item__quantity-btn" aria-label="Aumentar quantidade">+</button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Item 2 -->
-                    <div class="carrinho-item">
-                        <div class="carrinho-item__image-container">
-                            <img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" 
-                                 alt="Calça Slim Fit" 
-                                 class="carrinho-item__image"
-                                 loading="lazy">
-                        </div>
-                        
-                        <div class="carrinho-item__details">
-                            <h3 class="carrinho-item__title">Calça Slim Fit</h3>
-                            <p class="carrinho-item__variant">Tamanho: 42 | Cor: Azul Marinho</p>
-                            <button class="carrinho-item__remove">Remover</button>
-                        </div>
-                        
-                        <div class="carrinho-item__price">
-                            <span class="carrinho-item__current-price">R$ 299,90</span>
-                            
-                            <div class="carrinho-item__quantity">
-                                <button class="carrinho-item__quantity-btn" aria-label="Diminuir quantidade">-</button>
-                                <input type="number" 
-                                       value="1" 
-                                       min="1" 
-                                       max="10"
-                                       class="carrinho-item__quantity-input"
-                                       aria-label="Quantidade do produto">
-                                <button class="carrinho-item__quantity-btn" aria-label="Aumentar quantidade">+</button>
-                            </div>
-                        </div>
-                    </div>
+                <div class="carrinho__items" id="carrinhoItems">
+                    <!-- Itens serão carregados dinamicamente via JavaScript -->
                 </div>
                 
                 <div class="carrinho__actions">
@@ -921,16 +860,16 @@
                         Continuar Comprando
                     </a>
                     
-                    <button class="carrinho__update">Atualizar Carrinho</button>
+                    <button class="carrinho__update" id="atualizarCarrinho">Atualizar Carrinho</button>
                 </div>
             </div>
             
-            <div class="resumo">
+            <div class="resumo" id="resumoPedido">
                 <h3 class="resumo__title">Resumo do Pedido</h3>
                 
                 <div class="resumo__row">
                     <span>Subtotal</span>
-                    <span>R$ 449,80</span>
+                    <span id="subtotal">R$ 0,00</span>
                 </div>
                 
                 <div class="resumo__row">
@@ -940,16 +879,16 @@
                 
                 <div class="resumo__row resumo__row--total">
                     <span>Total</span>
-                    <span>R$ 449,80</span>
+                    <span id="total">R$ 0,00</span>
                 </div>
                 
-                <button class="resumo__checkout">Finalizar Compra</button>
+                <button class="resumo__checkout" id="finalizarCompra">Finalizar Compra</button>
                 
                 <p class="resumo__note">Taxas e impostos são calculados no checkout</p>
             </div>
 
             <!-- Versão carrinho vazio (oculta por padrão) -->
-            <div class="carrinho-vazio">
+            <div class="carrinho-vazio" id="carrinhoVazio">
                 <div class="carrinho-vazio__icon">
                     <i class="fas fa-shopping-bag"></i>
                 </div>
@@ -1009,246 +948,729 @@
 
     <!-- MAIN JS OTIMIZADO PARA MOBILE -->
     <script>
-        // Menu hamburger toggle
-        const hamburger = document.getElementById('hamburger');
-        const nav = document.getElementById('nav');
-        
-        function toggleMenu() {
-            nav.classList.toggle('active');
-            hamburger.classList.toggle('active');
+        // Sistema de Gerenciamento do Carrinho para a página do Carrinho
+        const CarrinhoManager = {
+            CARRINHO_KEY: 'karpe_carrinho',
             
-            // Prevenir scroll do body quando menu está aberto
-            document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
-        }
-        
-        hamburger.addEventListener('click', toggleMenu);
-        hamburger.addEventListener('touchstart', function(e) {
-            e.preventDefault();
-            toggleMenu();
-        }, { passive: false });
-        
-        // Fechar menu ao clicar em um link
-        document.querySelectorAll('.header__nav-link').forEach(link => {
-            link.addEventListener('click', function() {
-                nav.classList.remove('active');
-                hamburger.classList.remove('active');
-                document.body.style.overflow = '';
-            });
-        });
-        
-        // Fechar menu ao tocar fora (para mobile)
-        document.addEventListener('touchstart', function(e) {
-            if (nav.classList.contains('active') && !nav.contains(e.target) && !hamburger.contains(e.target)) {
-                nav.classList.remove('active');
-                hamburger.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        });
-
-        // Header scroll effect otimizado
-        let scrollTimeout;
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('.header');
+            init() {
+                this.carregarCarrinho();
+                this.configurarEventos();
+                this.atualizarContadorCarrinho();
+            },
             
-            // Debounce para performance mobile
-            clearTimeout(scrollTimeout);
-            scrollTimeout = setTimeout(() => {
-                if (window.scrollY > 50) {
-                    header.style.background = 'var(--white)';
-                    header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
-                } else {
-                    header.style.background = 'var(--white)';
-                    header.style.boxShadow = 'none';
+            obterCarrinho() {
+                const carrinho = localStorage.getItem(this.CARRINHO_KEY);
+                return carrinho ? JSON.parse(carrinho) : [];
+            },
+            
+            salvarCarrinho(carrinho) {
+                localStorage.setItem(this.CARRINHO_KEY, JSON.stringify(carrinho));
+                this.atualizarContadorCarrinho();
+            },
+            
+            removerItem(produtoId) {
+                let carrinho = this.obterCarrinho();
+                carrinho = carrinho.filter(item => item.id !== produtoId);
+                this.salvarCarrinho(carrinho);
+                this.carregarCarrinho();
+                return carrinho;
+            },
+            
+            atualizarQuantidade(produtoId, quantidade) {
+                const carrinho = this.obterCarrinho();
+                const item = carrinho.find(item => item.id === produtoId);
+                
+                if (item) {
+                    if (quantidade <= 0) {
+                        return this.removerItem(produtoId);
+                    }
+                    item.quantidade = quantidade;
+                    this.salvarCarrinho(carrinho);
+                    this.carregarCarrinho();
                 }
-            }, 10);
-        });
-
-        // Quantidade de produtos com melhor UX para touch
-        document.querySelectorAll('.carrinho-item__quantity-btn').forEach(btn => {
-            btn.addEventListener('click', handleQuantityChange);
-            btn.addEventListener('touchstart', function(e) {
-                e.preventDefault();
-                handleQuantityChange.call(this);
-            }, { passive: false });
-        });
-
-        function handleQuantityChange() {
-            const input = this.parentElement.querySelector('.carrinho-item__quantity-input');
-            let value = parseInt(input.value);
+                
+                return carrinho;
+            },
             
-            if (this.textContent === '+' && value < 10) {
-                input.value = value + 1;
-            } else if (this.textContent === '-' && value > 1) {
-                input.value = value - 1;
-            }
+            limparCarrinho() {
+                localStorage.removeItem(this.CARRINHO_KEY);
+                this.carregarCarrinho();
+                this.atualizarContadorCarrinho();
+            },
             
-            // Feedback tátil
-            this.style.transform = 'scale(0.95)';
-            setTimeout(() => {
-                this.style.transform = '';
-            }, 150);
+            calcularTotal() {
+                const carrinho = this.obterCarrinho();
+                return carrinho.reduce((total, item) => {
+                    return total + (parseFloat(item.preco) * item.quantidade);
+                }, 0);
+            },
             
-            updateTotalPrice();
-        }
-
-        // Input de quantidade com validação
-        document.querySelectorAll('.carrinho-item__quantity-input').forEach(input => {
-            input.addEventListener('change', function() {
-                let value = parseInt(this.value);
-                if (isNaN(value) || value < 1) {
-                    this.value = 1;
-                } else if (value > 10) {
-                    this.value = 10;
+            obterQuantidadeTotal() {
+                const carrinho = this.obterCarrinho();
+                return carrinho.reduce((total, item) => total + item.quantidade, 0);
+            },
+            
+            atualizarContadorCarrinho() {
+                const contadores = document.querySelectorAll('.header__action-count');
+                const quantidade = this.obterQuantidadeTotal();
+                
+                contadores.forEach(contador => {
+                    contador.textContent = quantidade;
+                    contador.style.display = quantidade > 0 ? 'flex' : 'none';
+                });
+            },
+            
+            carregarCarrinho() {
+                const carrinho = this.obterCarrinho();
+                const container = document.getElementById('carrinhoItems');
+                const carrinhoVazio = document.getElementById('carrinhoVazio');
+                const carrinhoContent = document.querySelector('.carrinho__content');
+                const resumo = document.getElementById('resumoPedido');
+                
+                if (carrinho.length === 0) {
+                    if (container) container.innerHTML = '';
+                    if (carrinhoVazio) carrinhoVazio.style.display = 'block';
+                    if (carrinhoContent) carrinhoContent.style.display = 'none';
+                    if (resumo) resumo.style.display = 'none';
+                    return;
                 }
-                updateTotalPrice();
-            });
+                
+                if (carrinhoVazio) carrinhoVazio.style.display = 'none';
+                if (carrinhoContent) carrinhoContent.style.display = 'block';
+                if (resumo) resumo.style.display = 'block';
+                
+                let html = '';
+                carrinho.forEach(item => {
+                    const precoFormatado = 'R$ ' + parseFloat(item.preco).toFixed(2).replace('.', ',');
+                    const subtotal = (parseFloat(item.preco) * item.quantidade).toFixed(2).replace('.', ',');
+                    
+                    html += `
+                        <div class="carrinho-item" data-product-id="${item.id}">
+                            <div class="carrinho-item__image-container">
+                                <img src="${item.imagem}" 
+                                     alt="${item.nome}" 
+                                     class="carrinho-item__image"
+                                     loading="lazy">
+                            </div>
+                            
+                            <div class="carrinho-item__details">
+                                <h3 class="carrinho-item__title">${item.nome}</h3>
+                                <p class="carrinho-item__variant">Categoria: ${item.categoria}</p>
+                                <button class="carrinho-item__remove">Remover</button>
+                            </div>
+                            
+                            <div class="carrinho-item__price">
+                                <span class="carrinho-item__current-price">R$ ${subtotal}</span>
+                                
+                                <div class="carrinho-item__quantity">
+                                    <button class="carrinho-item__quantity-btn" aria-label="Diminuir quantidade">-</button>
+                                    <input type="number" 
+                                           value="${item.quantidade}" 
+                                           min="1" 
+                                           max="10"
+                                           class="carrinho-item__quantity-input"
+                                           aria-label="Quantidade do produto">
+                                    <button class="carrinho-item__quantity-btn" aria-label="Aumentar quantidade">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                if (container) container.innerHTML = html;
+                this.atualizarResumo();
+            },
             
-            input.addEventListener('blur', function() {
-                if (this.value === '') {
-                    this.value = 1;
+            atualizarResumo() {
+                const subtotal = this.calcularTotal();
+                const subtotalElement = document.getElementById('subtotal');
+                const totalElement = document.getElementById('total');
+                
+                if (subtotalElement && totalElement) {
+                    const formattedSubtotal = 'R$ ' + subtotal.toFixed(2).replace('.', ',');
+                    subtotalElement.textContent = formattedSubtotal;
+                    totalElement.textContent = formattedSubtotal;
                 }
-            });
-        });
-
-        // Remover item com animação
-        document.querySelectorAll('.carrinho-item__remove').forEach(btn => {
-            btn.addEventListener('click', removeItem);
-            btn.addEventListener('touchstart', function(e) {
-                e.preventDefault();
-                removeItem.call(this);
-            }, { passive: false });
-        });
-
-        function removeItem() {
-            const item = this.closest('.carrinho-item');
+            },
             
-            // Animação de saída
-            item.style.transition = 'all 0.3s ease';
-            item.style.opacity = '0';
-            item.style.transform = 'translateX(-20px)';
-            item.style.height = item.offsetHeight + 'px';
+            configurarEventos() {
+                // Event delegation para botões de quantidade e remover
+                document.addEventListener('click', (e) => {
+                    // Botão de remover
+                    if (e.target.classList.contains('carrinho-item__remove')) {
+                        const item = e.target.closest('.carrinho-item');
+                        const productId = item.getAttribute('data-product-id');
+                        this.removerItem(productId);
+                    }
+                    
+                    // Botões de quantidade
+                    if (e.target.classList.contains('carrinho-item__quantity-btn')) {
+                        const input = e.target.parentElement.querySelector('.carrinho-item__quantity-input');
+                        let value = parseInt(input.value);
+                        const productId = e.target.closest('.carrinho-item').getAttribute('data-product-id');
+                        
+                        if (e.target.textContent === '+' && value < 10) {
+                            value++;
+                        } else if (e.target.textContent === '-' && value > 1) {
+                            value--;
+                        }
+                        
+                        input.value = value;
+                        this.atualizarQuantidade(productId, value);
+                        
+                        // Feedback tátil
+                        e.target.style.transform = 'scale(0.95)';
+                        setTimeout(() => {
+                            e.target.style.transform = '';
+                        }, 150);
+                    }
+                });
+                
+                // Input de quantidade com validação
+                document.addEventListener('change', (e) => {
+                    if (e.target.classList.contains('carrinho-item__quantity-input')) {
+                        let value = parseInt(e.target.value);
+                        const productId = e.target.closest('.carrinho-item').getAttribute('data-product-id');
+                        
+                        if (isNaN(value) || value < 1) {
+                            value = 1;
+                        } else if (value > 10) {
+                            value = 10;
+                        }
+                        
+                        e.target.value = value;
+                        this.atualizarQuantidade(productId, value);
+                    }
+                });
+                
+                // Botão atualizar carrinho
+                const updateBtn = document.getElementById('atualizarCarrinho');
+                if (updateBtn) {
+                    updateBtn.addEventListener('click', () => {
+                        updateBtn.classList.add('loading');
+                        updateBtn.textContent = 'Atualizando...';
+                        
+                        setTimeout(() => {
+                            updateBtn.classList.remove('loading');
+                            updateBtn.textContent = 'Atualizar Carrinho';
+                            this.mostrarNotificacao('Carrinho atualizado!', 'success');
+                        }, 1000);
+                    });
+                }
+                
+                // Botão finalizar compra
+                const checkoutBtn = document.getElementById('finalizarCompra');
+                if (checkoutBtn) {
+                    checkoutBtn.addEventListener('click', () => {
+                        const carrinho = this.obterCarrinho();
+                        if (carrinho.length === 0) {
+                            this.mostrarNotificacao('Seu carrinho está vazio!', 'error');
+                            return;
+                        }
+                        
+                        checkoutBtn.classList.add('loading');
+                        checkoutBtn.textContent = 'Processando...';
+                        
+                        setTimeout(() => {
+                            // Simulação de redirecionamento para checkout
+                            this.mostrarNotificacao('Redirecionando para checkout...', 'success');
+                            // window.location.href = '/checkout';
+                        }, 1500);
+                    });
+                }
+            },
             
-            setTimeout(() => {
-                item.style.height = '0';
-                item.style.margin = '0';
-                item.style.padding = '0';
-            }, 300);
-            
-            setTimeout(() => {
-                item.remove();
-                checkEmptyCart();
-                updateTotalPrice();
-            }, 600);
-        }
-
-        // Atualizar preço total
-        function updateTotalPrice() {
-            // Simulação - em produção, calcular baseado nos itens reais
-            let subtotal = 0;
-            document.querySelectorAll('.carrinho-item').forEach(item => {
-                const priceText = item.querySelector('.carrinho-item__current-price').textContent;
-                const price = parseFloat(priceText.replace('R$ ', '').replace(',', '.'));
-                const quantity = parseInt(item.querySelector('.carrinho-item__quantity-input').value);
-                subtotal += price * quantity;
-            });
-            
-            // Atualizar display
-            const subtotalElement = document.querySelector('.resumo__row:first-child span:last-child');
-            const totalElement = document.querySelector('.resumo__row--total span:last-child');
-            
-            const formattedSubtotal = 'R$ ' + subtotal.toFixed(2).replace('.', ',');
-            subtotalElement.textContent = formattedSubtotal;
-            totalElement.textContent = formattedSubtotal;
-        }
-
-        // Verificar se o carrinho está vazio
-        function checkEmptyCart() {
-            const items = document.querySelectorAll('.carrinho-item');
-            const cartContent = document.querySelector('.carrinho__content');
-            const emptyCart = document.querySelector('.carrinho-vazio');
-            const resumo = document.querySelector('.resumo');
-            
-            if (items.length === 0) {
-                cartContent.style.display = 'none';
-                resumo.style.display = 'none';
-                emptyCart.style.display = 'block';
-            } else {
-                cartContent.style.display = 'block';
-                resumo.style.display = 'block';
-                emptyCart.style.display = 'none';
-            }
-        }
-
-        // Atualizar carrinho com loading state
-        document.querySelector('.carrinho__update').addEventListener('click', function() {
-            this.classList.add('loading');
-            this.textContent = 'Atualizando...';
-            
-            setTimeout(() => {
-                this.classList.remove('loading');
-                this.textContent = 'Atualizar Carrinho';
-                updateTotalPrice();
-                // Simulação de sucesso
-                showNotification('Carrinho atualizado!', 'success');
-            }, 1000);
-        });
-
-        // Finalizar compra
-        document.querySelector('.resumo__checkout').addEventListener('click', function() {
-            this.classList.add('loading');
-            this.textContent = 'Processando...';
-            
-            setTimeout(() => {
-                // Simulação de redirecionamento
-                window.location.href = '/checkout';
-            }, 1500);
-        });
-
-        // Sistema de notificação
-        function showNotification(message, type = 'info') {
-            const notification = document.createElement('div');
-            notification.style.cssText = `
-                position: fixed;
-                top: 100px;
-                right: 20px;
-                background: var(--black);
-                color: var(--white);
-                padding: 15px 20px;
-                border-radius: 8px;
-                font-size: 1.4rem;
-                z-index: 10000;
-                transform: translateX(100%);
-                transition: transform 0.3s ease;
-                max-width: 300px;
-            `;
-            notification.textContent = message;
-            document.body.appendChild(notification);
-            
-            setTimeout(() => {
-                notification.style.transform = 'translateX(0)';
-            }, 100);
-            
-            setTimeout(() => {
-                notification.style.transform = 'translateX(100%)';
+            mostrarNotificacao(mensagem, tipo = 'info') {
+                const notification = document.createElement('div');
+                const backgroundColor = tipo === 'error' ? '#EF4444' : 'var(--black)';
+                
+                notification.style.cssText = `
+                    position: fixed;
+                    top: 100px;
+                    right: 20px;
+                    background: ${backgroundColor};
+                    color: var(--white);
+                    padding: 15px 20px;
+                    border-radius: 8px;
+                    font-size: 1.4rem;
+                    z-index: 10000;
+                    transform: translateX(100%);
+                    transition: transform 0.3s ease;
+                    max-width: 300px;
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                `;
+                notification.textContent = mensagem;
+                document.body.appendChild(notification);
+                
                 setTimeout(() => {
-                    document.body.removeChild(notification);
-                }, 300);
-            }, 3000);
-        }
+                    notification.style.transform = 'translateX(0)';
+                }, 100);
+                
+                setTimeout(() => {
+                    notification.style.transform = 'translateX(100%)';
+                    setTimeout(() => {
+                        document.body.removeChild(notification);
+                    }, 300);
+                }, 3000);
+            }
+        };
+
+        // Inicializar quando o DOM estiver carregado
+        document.addEventListener('DOMContentLoaded', function() {
+            CarrinhoManager.init();
+            
+            // Menu hamburger toggle (mantido do código original)
+            const hamburger = document.getElementById('hamburger');
+            const nav = document.getElementById('nav');
+            
+            function toggleMenu() {
+                nav.classList.toggle('active');
+                hamburger.classList.toggle('active');
+                document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
+            }
+            
+            if (hamburger) {
+                hamburger.addEventListener('click', toggleMenu);
+                hamburger.addEventListener('touchstart', function(e) {
+                    e.preventDefault();
+                    toggleMenu();
+                }, { passive: false });
+            }
+            
+            // Fechar menu ao clicar em um link
+            document.querySelectorAll('.header__nav-link').forEach(link => {
+                link.addEventListener('click', function() {
+                    nav.classList.remove('active');
+                    hamburger.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            });
+            
+            // Header scroll effect
+            let scrollTimeout;
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('.header');
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(() => {
+                    if (window.scrollY > 50) {
+                        header.style.background = 'var(--white)';
+                        header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+                    } else {
+                        header.style.background = 'var(--white)';
+                        header.style.boxShadow = 'none';
+                    }
+                }, 10);
+            });
+        });
 
         // Prevenir zoom em inputs no iOS
         document.addEventListener('touchstart', function() {}, {passive: true});
 
-        // Inicialização
-        document.addEventListener('DOMContentLoaded', function() {
-            updateTotalPrice();
-            checkEmptyCart();
-        });
-
         // Melhorar performance em scroll
         window.addEventListener('scroll', function() {
-            // Debounce já implementado acima
         }, { passive: true });
+        // Sistema de Pagamento com Mercado Pago
+        const PaymentManager = {
+            // Configuração do Mercado Pago (substitua pela sua public key)
+            MP_PUBLIC_KEY: 'SUA_PUBLIC_KEY_DO_MERCADO_PAGO',
+            
+            init() {
+                this.carregarSDKMercadoPago();
+                this.configurarCheckout();
+            },
+            
+            carregarSDKMercadoPago() {
+                const script = document.createElement('script');
+                script.src = 'https://sdk.mercadopago.com/js/v2';
+                script.onload = () => {
+                    this.inicializarMercadoPago();
+                };
+                document.head.appendChild(script);
+            },
+            
+            inicializarMercadoPago() {
+                if (typeof MercadoPago !== 'undefined') {
+                    this.mp = new MercadoPago(this.MP_PUBLIC_KEY);
+                    this.criarBrick();
+                }
+            },
+            
+            async criarBrick() {
+                try {
+                    // Criar preferência de pagamento
+                    const preferenceData = await this.criarPreferencia();
+                    
+                    // Renderizar brick do Mercado Pago
+                    this.bricks = await this.mp.bricks();
+                    
+                    this.renderWalletBrick(preferenceData.id);
+                } catch (error) {
+                    console.error('Erro ao criar brick:', error);
+                }
+            },
+            
+            async criarPreferencia() {
+                const carrinho = CarrinhoManager.obterCarrinho();
+                const total = CarrinhoManager.calcularTotal();
+                
+                const items = carrinho.map(item => ({
+                    title: item.nome,
+                    quantity: item.quantidade,
+                    currency_id: 'BRL',
+                    unit_price: parseFloat(item.preco)
+                }));
+                
+                const response = await fetch('/api/criar-preferencia', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        items: items,
+                        back_urls: {
+                            success: window.location.origin + '/sucesso.html',
+                            failure: window.location.origin + '/erro.html',
+                            pending: window.location.origin + '/pendente.html'
+                        },
+                        auto_return: 'approved',
+                        notification_url: window.location.origin + '/api/webhook'
+                    })
+                });
+                
+                return await response.json();
+            },
+            
+            renderWalletBrick(preferenceId) {
+                const settings = {
+                    initialization: {
+                        preferenceId: preferenceId,
+                    },
+                    callbacks: {
+                        onReady: () => {
+                            console.log('Wallet Brick ready');
+                        },
+                        onError: (error) => {
+                            console.error('Wallet Brick error:', error);
+                        }
+                    }
+                };
+                
+                this.bricks.create('wallet', 'walletBrick_container', settings);
+            },
+            
+            configurarCheckout() {
+                const checkoutBtn = document.getElementById('finalizarCompra');
+                if (checkoutBtn) {
+                    checkoutBtn.addEventListener('click', () => {
+                        this.processarPagamento();
+                    });
+                }
+            },
+            
+            async processarPagamento() {
+                const carrinho = CarrinhoManager.obterCarrinho();
+                
+                if (carrinho.length === 0) {
+                    CarrinhoManager.mostrarNotificacao('Seu carrinho está vazio!', 'error');
+                    return;
+                }
+                
+                // Mostrar modal de pagamento
+                this.mostrarModalPagamento();
+            },
+            
+            mostrarModalPagamento() {
+                const modalHTML = `
+                    <div class="payment-modal" id="paymentModal">
+                        <div class="payment-modal__content">
+                            <div class="payment-modal__header">
+                                <h3>Finalizar Compra</h3>
+                                <button class="payment-modal__close" id="closePaymentModal">&times;</button>
+                            </div>
+                            <div class="payment-modal__body">
+                                <div id="walletBrick_container"></div>
+                                <div class="payment-options">
+                                    <h4>Ou escolha outra forma de pagamento:</h4>
+                                    <button class="payment-option" data-method="pix">
+                                        <i class="fas fa-qrcode"></i>
+                                        PIX
+                                    </button>
+                                    <button class="payment-option" data-method="card">
+                                        <i class="fas fa-credit-card"></i>
+                                        Cartão de Crédito
+                                    </button>
+                                    <button class="payment-option" data-method="boleto">
+                                        <i class="fas fa-barcode"></i>
+                                        Boleto
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                document.body.insertAdjacentHTML('beforeend', modalHTML);
+                
+                // Configurar eventos
+                document.getElementById('closePaymentModal').addEventListener('click', this.fecharModalPagamento);
+                document.querySelectorAll('.payment-option').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        this.selecionarMetodoPagamento(e.target.dataset.method);
+                    });
+                });
+                
+                // Adicionar CSS do modal
+                this.adicionarCSSPagamento();
+            },
+            
+            fecharModalPagamento() {
+                const modal = document.getElementById('paymentModal');
+                if (modal) {
+                    modal.remove();
+                }
+            },
+            
+            selecionarMetodoPagamento(metodo) {
+                console.log('Método selecionado:', metodo);
+                // Implementar lógica específica para cada método
+                switch(metodo) {
+                    case 'pix':
+                        this.processarPix();
+                        break;
+                    case 'card':
+                        this.processarCartao();
+                        break;
+                    case 'boleto':
+                        this.processarBoleto();
+                        break;
+                }
+            },
+            
+            async processarPix() {
+                try {
+                    const carrinho = CarrinhoManager.obterCarrinho();
+                    const total = CarrinhoManager.calcularTotal();
+                    
+                    const response = await fetch('/api/criar-pagamento-pix', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            items: carrinho,
+                            total: total,
+                            customer: this.obterDadosCliente()
+                        })
+                    });
+                    
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        this.mostrarQRCodePix(data.qr_code, data.copy_paste);
+                    }
+                } catch (error) {
+                    console.error('Erro ao processar PIX:', error);
+                    CarrinhoManager.mostrarNotificacao('Erro ao processar pagamento PIX', 'error');
+                }
+            },
+            
+            mostrarQRCodePix(qrCode, copyPaste) {
+                const modalBody = document.querySelector('.payment-modal__body');
+                modalBody.innerHTML = `
+                    <div class="pix-payment">
+                        <h4>Pagamento via PIX</h4>
+                        <div class="qrcode-container">
+                            <img src="${qrCode}" alt="QR Code PIX" class="qrcode">
+                        </div>
+                        <div class="pix-copy">
+                            <p>Ou copie o código:</p>
+                            <div class="copy-container">
+                                <input type="text" value="${copyPaste}" readonly class="copy-input">
+                                <button class="copy-btn" id="copyPixCode">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="payment-instructions">
+                            <p>📱 Abra seu app do banco</p>
+                            <p>📷 Escaneie o QR Code ou cole o código</p>
+                            <p>✅ Confirme o pagamento</p>
+                        </div>
+                        <div class="payment-timer">
+                            <p>⏰ Este QR Code expira em: <span id="pixTimer">30:00</span></p>
+                        </div>
+                    </div>
+                `;
+                
+                document.getElementById('copyPixCode').addEventListener('click', () => {
+                    navigator.clipboard.writeText(copyPaste);
+                    CarrinhoManager.mostrarNotificacao('Código PIX copiado!', 'success');
+                });
+                
+                this.iniciarTemporizadorPix();
+            },
+            
+            iniciarTemporizadorPix() {
+                let tempoRestante = 30 * 60; // 30 minutos em segundos
+                const timerElement = document.getElementById('pixTimer');
+                
+                const timer = setInterval(() => {
+                    tempoRestante--;
+                    
+                    const minutos = Math.floor(tempoRestante / 60);
+                    const segundos = tempoRestante % 60;
+                    
+                    timerElement.textContent = `${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`;
+                    
+                    if (tempoRestante <= 0) {
+                        clearInterval(timer);
+                        CarrinhoManager.mostrarNotificacao('QR Code PIX expirado!', 'error');
+                        this.fecharModalPagamento();
+                    }
+                }, 1000);
+            },
+            
+            adicionarCSSPagamento() {
+                const css = `
+                    <style>
+                        .payment-modal {
+                            position: fixed;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            background: rgba(0,0,0,0.8);
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            z-index: 10000;
+                        }
+                        
+                        .payment-modal__content {
+                            background: white;
+                            border-radius: 12px;
+                            width: 90%;
+                            max-width: 500px;
+                            max-height: 90vh;
+                            overflow-y: auto;
+                        }
+                        
+                        .payment-modal__header {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            padding: 20px;
+                            border-bottom: 1px solid var(--gray-2);
+                        }
+                        
+                        .payment-modal__close {
+                            background: none;
+                            border: none;
+                            font-size: 2.4rem;
+                            cursor: pointer;
+                            color: var(--gray-5);
+                        }
+                        
+                        .payment-modal__body {
+                            padding: 20px;
+                        }
+                        
+                        .payment-options {
+                            margin-top: 20px;
+                        }
+                        
+                        .payment-option {
+                            width: 100%;
+                            padding: 15px;
+                            margin: 10px 0;
+                            border: 2px solid var(--gray-2);
+                            border-radius: 8px;
+                            background: white;
+                            cursor: pointer;
+                            display: flex;
+                            align-items: center;
+                            gap: 10px;
+                            font-size: 1.4rem;
+                            transition: var(--transition);
+                        }
+                        
+                        .payment-option:hover {
+                            border-color: var(--black);
+                            background: var(--gray-1);
+                        }
+                        
+                        .pix-payment {
+                            text-align: center;
+                        }
+                        
+                        .qrcode-container {
+                            margin: 20px 0;
+                            padding: 20px;
+                            background: white;
+                            border-radius: 8px;
+                            border: 1px solid var(--gray-2);
+                        }
+                        
+                        .qrcode {
+                            max-width: 200px;
+                            height: auto;
+                        }
+                        
+                        .copy-container {
+                            display: flex;
+                            gap: 10px;
+                            margin: 15px 0;
+                        }
+                        
+                        .copy-input {
+                            flex: 1;
+                            padding: 10px;
+                            border: 1px solid var(--gray-2);
+                            border-radius: 4px;
+                            font-size: 1.2rem;
+                        }
+                        
+                        .copy-btn {
+                            padding: 10px 15px;
+                            background: var(--black);
+                            color: white;
+                            border: none;
+                            border-radius: 4px;
+                            cursor: pointer;
+                        }
+                        
+                        .payment-instructions {
+                            background: var(--gray-1);
+                            padding: 15px;
+                            border-radius: 8px;
+                            margin: 15px 0;
+                            text-align: left;
+                        }
+                        
+                        .payment-timer {
+                            color: #EF4444;
+                            font-weight: 600;
+                        }
+                    </style>
+                `;
+                
+                document.head.insertAdjacentHTML('beforeend', css);
+            },
+            
+            obterDadosCliente() {
+                // Implementar captura de dados do cliente
+                return {
+                    nome: '',
+                    email: '',
+                    cpf: ''
+                };
+            }
+        };
+
+        // Inicializar sistema de pagamento
+        document.addEventListener('DOMContentLoaded', function() {
+            PaymentManager.init();
+        });
     </script>
 </body>
 </html>

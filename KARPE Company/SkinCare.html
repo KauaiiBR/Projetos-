@@ -758,6 +758,12 @@
                 display: none;
             }
         }
+
+        /* Loading states */
+        .loading {
+            opacity: 0.7;
+            pointer-events: none;
+        }
     </style>
 </head>
 <body>
@@ -776,7 +782,7 @@
                 <nav class="header__nav" id="nav">
                     <ul class="header__nav-list">
                         <li class="header__nav-item">
-                            <a href="/" class="header__nav-link">Novidades</a>
+                            <a href="Novidades.html" class="header__nav-link">Novidades</a>
                         </li>
                         <li class="header__nav-item">
                             <a class='header__nav-link' href='Roupas.html'>Roupas</a>
@@ -867,7 +873,7 @@
                     <div class="produto-card__image-container">
                         <span class="produto-card__badge">Novidade</span>
                         <img src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Cleanser Facial" class="produto-card__image">
-                        <button class="produto-card__quickview">Visualização Rápida</button>
+                        <button class="produto-card__quickview" data-product-id="13">Adicionar ao Carrinho</button>
                     </div>
                     <h3 class="produto-card__title">Cleanser Facial</h3>
                     <p class="produto-card__category">Limpeza</p>
@@ -879,7 +885,7 @@
                     <div class="produto-card__image-container">
                         <span class="produto-card__badge">Mais Vendido</span>
                         <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" alt="Hidratante Noturno" class="produto-card__image">
-                        <button class="produto-card__quickview">Visualização Rápida</button>
+                        <button class="produto-card__quickview" data-product-id="14">Adicionar ao Carrinho</button>
                     </div>
                     <h3 class="produto-card__title">Hidratante Noturno</h3>
                     <p class="produto-card__category">Hidratação</p>
@@ -890,7 +896,7 @@
                 <div class="produto-card">
                     <div class="produto-card__image-container">
                         <img src="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" alt="Esfoliante Suave" class="produto-card__image">
-                        <button class="produto-card__quickview">Visualização Rápida</button>
+                        <button class="produto-card__quickview" data-product-id="15">Adicionar ao Carrinho</button>
                     </div>
                     <h3 class="produto-card__title">Esfoliante Suave</h3>
                     <p class="produto-card__category">Esfoliação</p>
@@ -901,7 +907,7 @@
                 <div class="produto-card">
                     <div class="produto-card__image-container">
                         <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" alt="Tônico Facial" class="produto-card__image">
-                        <button class="produto-card__quickview">Visualização Rápida</button>
+                        <button class="produto-card__quickview" data-product-id="16">Adicionar ao Carrinho</button>
                     </div>
                     <h3 class="produto-card__title">Tônico Facial</h3>
                     <p class="produto-card__category">Tonificação</p>
@@ -913,7 +919,7 @@
                     <div class="produto-card__image-container">
                         <span class="produto-card__badge">Novidade</span>
                         <img src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Sérum Vitamina C" class="produto-card__image">
-                        <button class="produto-card__quickview">Visualização Rápida</button>
+                        <button class="produto-card__quickview" data-product-id="17">Adicionar ao Carrinho</button>
                     </div>
                     <h3 class="produto-card__title">Sérum Vitamina C</h3>
                     <p class="produto-card__category">Tratamento</p>
@@ -924,7 +930,7 @@
                 <div class="produto-card">
                     <div class="produto-card__image-container">
                         <img src="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" alt="Protetor Solar FPS 50" class="produto-card__image">
-                        <button class="produto-card__quickview">Visualização Rápida</button>
+                        <button class="produto-card__quickview" data-product-id="18">Adicionar ao Carrinho</button>
                     </div>
                     <h3 class="produto-card__title">Protetor Solar FPS 50</h3>
                     <p class="produto-card__category">Proteção</p>
@@ -971,7 +977,7 @@
                 <div class="footer__col">
                     <h4 class="footer__title">Loja</h4>
                     <ul class="footer__links">
-                        <li class="footer__link"><a href="">Novidades</a></li>
+                        <li class="footer__link"><a href="Novidades.html">Novidades</a></li>
                         <li class="footer__link"><a href='Roupas.html'>Roupas</a></li>
                         <li class="footer__link"><a href="Calçados.html">Calçados</a></li>
                         <li class="footer__link"><a href='SkinCare.html'>Skincare</a></li>
@@ -980,7 +986,7 @@
                 <div class="footer__col">
                     <h4 class="footer__title">Informações</h4>
                     <ul class="footer__links">
-                        <li class="footer__link"><a href="KARPE.html">Sobre nós</a></li>
+                        <li class="footer__link"><a href="index.html">Sobre nós</a></li>
                         <li class="footer__link"><a href="#">Trocas e devoluções</a></li>
                         <li class="footer__link"><a href="#">Entregas</a></li>
                         <li class="footer__link"><a href="Politica de privacidade.html">Política de privacidade</a></li>
@@ -1009,6 +1015,147 @@
 
     <!-- MAIN JS -->
     <script>
+        // Sistema de Gerenciamento do Carrinho
+        const CarrinhoManager = {
+            CARRINHO_KEY: 'karpe_carrinho',
+            
+            init() {
+                this.atualizarContadorCarrinho();
+                this.configurarEventos();
+            },
+            
+            obterCarrinho() {
+                const carrinho = localStorage.getItem(this.CARRINHO_KEY);
+                return carrinho ? JSON.parse(carrinho) : [];
+            },
+            
+            salvarCarrinho(carrinho) {
+                localStorage.setItem(this.CARRINHO_KEY, JSON.stringify(carrinho));
+                this.atualizarContadorCarrinho();
+            },
+            
+            adicionarItem(produto) {
+                const carrinho = this.obterCarrinho();
+                const itemExistente = carrinho.find(item => item.id === produto.id);
+                
+                if (itemExistente) {
+                    itemExistente.quantidade += produto.quantidade || 1;
+                } else {
+                    carrinho.push({
+                        id: produto.id,
+                        nome: produto.nome,
+                        preco: produto.preco,
+                        imagem: produto.imagem,
+                        quantidade: produto.quantidade || 1,
+                        categoria: produto.categoria || 'Skincare'
+                    });
+                }
+                
+                this.salvarCarrinho(carrinho);
+                return carrinho;
+            },
+            
+            obterQuantidadeTotal() {
+                const carrinho = this.obterCarrinho();
+                return carrinho.reduce((total, item) => total + item.quantidade, 0);
+            },
+            
+            atualizarContadorCarrinho() {
+                const contadores = document.querySelectorAll('.header__action-count');
+                const quantidade = this.obterQuantidadeTotal();
+                
+                contadores.forEach(contador => {
+                    contador.textContent = quantidade;
+                    contador.style.display = quantidade > 0 ? 'flex' : 'none';
+                });
+            },
+            
+            configurarEventos() {
+                document.addEventListener('click', (e) => {
+                    if (e.target.classList.contains('produto-card__quickview') || 
+                        e.target.closest('.produto-card__quickview')) {
+                        e.preventDefault();
+                        
+                        const botao = e.target.classList.contains('produto-card__quickview') ? 
+                            e.target : e.target.closest('.produto-card__quickview');
+                        
+                        const produtoCard = botao.closest('.produto-card');
+                        const produtoId = botao.getAttribute('data-product-id');
+                        
+                        const produto = {
+                            id: produtoId,
+                            nome: produtoCard.querySelector('.produto-card__title').textContent,
+                            preco: produtoCard.querySelector('.produto-card__price').textContent
+                                .replace('R$ ', '').replace(',', '.'),
+                            imagem: produtoCard.querySelector('.produto-card__image').src,
+                            quantidade: 1
+                        };
+                        
+                        this.adicionarAoCarrinhoComFeedback(produto, botao);
+                    }
+                });
+            },
+            
+            adicionarAoCarrinhoComFeedback(produto, botao) {
+                const textoOriginal = botao.textContent;
+                
+                botao.textContent = 'Adicionando...';
+                botao.classList.add('loading');
+                
+                setTimeout(() => {
+                    this.adicionarItem(produto);
+                    
+                    botao.textContent = 'Adicionado!';
+                    botao.style.backgroundColor = '#10B981';
+                    
+                    this.mostrarNotificacao('Produto adicionado ao carrinho!', 'success');
+                    
+                    setTimeout(() => {
+                        botao.textContent = textoOriginal;
+                        botao.style.backgroundColor = '';
+                        botao.classList.remove('loading');
+                    }, 1500);
+                }, 500);
+            },
+            
+            mostrarNotificacao(mensagem, tipo = 'info') {
+                const notification = document.createElement('div');
+                notification.style.cssText = `
+                    position: fixed;
+                    top: 100px;
+                    right: 20px;
+                    background: var(--black);
+                    color: var(--white);
+                    padding: 15px 20px;
+                    border-radius: 8px;
+                    font-size: 1.4rem;
+                    z-index: 10000;
+                    transform: translateX(100%);
+                    transition: transform 0.3s ease;
+                    max-width: 300px;
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                `;
+                notification.textContent = mensagem;
+                document.body.appendChild(notification);
+                
+                setTimeout(() => {
+                    notification.style.transform = 'translateX(0)';
+                }, 100);
+                
+                setTimeout(() => {
+                    notification.style.transform = 'translateX(100%)';
+                    setTimeout(() => {
+                        document.body.removeChild(notification);
+                    }, 300);
+                }, 3000);
+            }
+        };
+
+        // Inicializar quando o DOM estiver carregado
+        document.addEventListener('DOMContentLoaded', function() {
+            CarrinhoManager.init();
+        });
+
         // Menu hamburger toggle
         const hamburger = document.getElementById('hamburger');
         const nav = document.getElementById('nav');
@@ -1065,65 +1212,8 @@
             });
         });
 
-        // Adicionar ao carrinho
-        document.querySelectorAll('.produto-card__quickview').forEach(button => {
-            button.addEventListener('click', function(e) {
-                e.preventDefault();
-                const countElement = document.querySelector('.header__action-count');
-                let count = parseInt(countElement.textContent) || 0;
-                countElement.textContent = count + 1;
-                
-                const button = this;
-                const originalText = button.textContent;
-                button.textContent = 'Adicionado!';
-                button.style.backgroundColor = '#4CAF50';
-                
-                setTimeout(() => {
-                    button.textContent = originalText;
-                    button.style.backgroundColor = '';
-                }, 2000);
-            });
-        });
-        
         // Melhorar a experiência de toque em dispositivos móveis
         document.addEventListener('touchstart', function() {}, {passive: true});
-
-        // Adicionar ao carrinho
-function adicionarAoCarrinho(produtoId, quantidade = 1) {
-    fetch('/api/carrinho/adicionar', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            produto_id: produtoId,
-            quantidade: quantidade
-        })
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            // Atualizar contador do carrinho
-            document.querySelectorAll('.header__action-count').forEach(el => {
-                el.textContent = data.total_itens;
-            });
-            
-            // Feedback visual
-            alert('Produto adicionado ao carrinho!');
-        }
-    });
-}
-
-// Usar nos botões "Visualização Rápida"
-document.querySelectorAll('.produto-card__quickview').forEach(button => {
-    button.addEventListener('click', function(e) {
-        e.preventDefault();
-        const produtoCard = this.closest('.produto-card');
-        // Você precisaria adicionar data attributes aos produtos
-        const produtoId = produtoCard.dataset.produtoId;
-        adicionarAoCarrinho(produtoId, 1);
-    });
-});
     </script>
 </body>
 </html>
